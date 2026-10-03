@@ -44,7 +44,7 @@ class Settings(BaseSettings):
     fast_model: str = "deepseek/deepseek-v4-flash"
     structured_output_method: Literal["function_calling", "json_schema"] = "json_schema"
     llm_requests_per_second: float = 2
-    llm_max_tokens: int = 4000
+    llm_max_tokens: int = 8000
     llm_timeout_seconds: int = 60
 
     # OpenAI: embeddings only
@@ -54,7 +54,7 @@ class Settings(BaseSettings):
 
     # Agents
     agent_max_steps: int = 6
-    agent_timeout_seconds: int = 120
+    agent_timeout_seconds: int = 240
 
     # LangSmith
     langsmith_tracing: bool = True

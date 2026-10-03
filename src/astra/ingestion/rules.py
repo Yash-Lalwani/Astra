@@ -45,22 +45,27 @@ def is_applicable_trial(study: ParsedStudy) -> bool:
     )
 
 
-def results_due_status(study: ParsedStudy, today: date) -> dict:
-    """Approximation of the FDAAA results deadline: results are due 12 months after the
-    actual primary completion date of a completed applicable trial. Extensions and
-    certifications of delay are not visible in the public API, so this can over-flag.
+def results_deadline_passed(study: ParsedStudy, today: date) -> bool:
+    """Approximation of the FDAAA results deadline: a completed applicable trial must post
+    results within 12 months of its actual primary completion date. True once that deadline
+    has passed, whether or not results were posted.
     """
-    if not (
+    return bool(
         study.is_applicable_trial
         and study.overall_status == "COMPLETED"
         and study.primary_completion_type == "ACTUAL"
         and study.primary_completion_date
-        and not study.has_results
-    ):
+        and today > one_year_after(study.primary_completion_date)
+    )
+
+
+def results_due_status(study: ParsedStudy, today: date) -> dict:
+    """Results are overdue when the deadline has passed and none are posted. Extensions and
+    certifications of delay are not visible in the public API, so this can over-flag.
+    """
+    if study.has_results or not results_deadline_passed(study, today):
         return {"results_due": False, "months_overdue": 0}
     deadline = one_year_after(study.primary_completion_date)
-    if today <= deadline:
-        return {"results_due": False, "months_overdue": 0}
     return {"results_due": True, "months_overdue": months_between(deadline, today)}
 
 

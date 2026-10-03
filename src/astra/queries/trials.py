@@ -1,6 +1,6 @@
 from psycopg.types.json import Jsonb
 
-from astra.db import execute_many, fetch_all
+from astra.db import execute_many, fetch_all, fetch_one
 from astra.models import ParsedStudy
 
 STUDY_COLUMNS = (
@@ -51,3 +51,84 @@ async def counts_by_group_and_status() -> list[dict]:
         ORDER BY condition_group, trials DESC
         """
     )
+
+
+# Optional filters shared by the tool queries: a NULL parameter means "no filter".
+# The sponsor filter is a case-insensitive substring: "lilly" finds "Eli Lilly and Company".
+OPTIONAL_FILTERS = """
+  (%(condition_group)s::text IS NULL OR condition_group = %(condition_group)s)
+  AND (%(sponsor)s::text IS NULL OR sponsor ILIKE '%%' || %(sponsor)s || '%%')
+"""
+
+
+def _to_study(row: dict) -> ParsedStudy:
+    return ParsedStudy.model_validate({field: row[field] for field in ParsedStudy.model_fields})
+
+
+async def search_studies(
+    condition_group: str | None,
+    sponsor: str | None,
+    status: str | None,
+    has_results: bool | None,
+    phase: str | None,
+    limit: int,
+) -> list[dict]:
+    return await fetch_all(
+        f"""
+        SELECT nct_id, title, sponsor, condition_group, overall_status, phases,
+               start_date, primary_completion_date, primary_completion_type, has_results,
+               is_applicable_trial
+        FROM studies
+        WHERE {OPTIONAL_FILTERS}
+          AND (%(status)s::text IS NULL OR overall_status = %(status)s)
+          AND (%(has_results)s::boolean IS NULL OR has_results = %(has_results)s)
+          AND (%(phase)s::text IS NULL OR %(phase)s = ANY(phases))
+        ORDER BY nct_id
+        LIMIT %(limit)s
+        """,
+        {
+            "condition_group": condition_group,
+            "sponsor": sponsor,
+            "status": status,
+            "has_results": has_results,
+            "phase": phase,
+            "limit": limit,
+        },
+    )
+
+
+async def get_study(nct_id: str) -> ParsedStudy | None:
+    row = await fetch_one("SELECT * FROM studies WHERE nct_id = %s", (nct_id,))
+    return _to_study(row) if row else None
+
+
+async def missing_results_candidates(
+    condition_group: str | None, sponsor: str | None
+) -> list[ParsedStudy]:
+    """Completed applicable trials without results; rules.results_due_status decides the rest."""
+    rows = await fetch_all(
+        f"""
+        SELECT * FROM studies
+        WHERE {OPTIONAL_FILTERS}
+          AND is_applicable_trial AND overall_status = 'COMPLETED' AND NOT has_results
+        """,
+        {"condition_group": condition_group, "sponsor": sponsor},
+    )
+    return [_to_study(row) for row in rows]
+
+
+async def studies_with_status(
+    statuses: list[str], condition_group: str | None, sponsor: str | None
+) -> list[ParsedStudy]:
+    rows = await fetch_all(
+        f"""
+        SELECT * FROM studies
+        WHERE {OPTIONAL_FILTERS} AND overall_status = ANY(%(statuses)s)
+        """,
+        {"condition_group": condition_group, "sponsor": sponsor, "statuses": statuses},
+    )
+    return [_to_study(row) for row in rows]
+
+
+async def all_studies() -> list[ParsedStudy]:
+    return [_to_study(row) for row in await fetch_all("SELECT * FROM studies")]

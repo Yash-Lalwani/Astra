@@ -1,6 +1,18 @@
+import uuid
 from datetime import date
+from typing import Literal
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
+
+AgentName = Literal[
+    "missing_results",
+    "broken_promises",
+    "track_record",
+    "pattern_finder",
+    "side_effect",
+    "timeline",
+]
+ConditionGroup = Literal["oncology", "cardiovascular", "cns_mental_health", "metabolic_t2d"]
 
 
 class Intervention(BaseModel):
@@ -71,3 +83,57 @@ class ParsedPaper(BaseModel):
     journal: str | None = None
     pub_date: date | None = None
     linked_nct_ids: list[str] = []
+
+
+# Field descriptions are part of the JSON schema the model sees in structured calls.
+class EvidenceItem(BaseModel):
+    source: Literal["registry", "paper", "aggregate"]
+    reference: str = Field(description='NCT ID, PMID, or "sponsor:<name>" / "group:<value>"')
+    detail: str = Field(description="The specific fact, taken from a tool result")
+
+
+class SignalDraft(BaseModel):
+    nct_id: str | None = None
+    sponsor: str | None = None
+    related_nct_ids: list[str] = []
+    title: str = Field(description="A short description of the finding, at most 120 characters")
+    summary: str = Field(description="2-4 sentences, plain language")
+    evidence: list[EvidenceItem]
+    confidence: float = Field(description="0 to 1")
+
+
+class AgentFindings(BaseModel):
+    signals: list[SignalDraft]
+    notes: str = Field(description='What was checked, including "nothing found"')
+
+
+class AgentResult(BaseModel):
+    agent: AgentName
+    signals: list[SignalDraft] = []
+    notes: str = ""
+    steps: int = 0
+    tool_calls: int = 0
+    tools_used: list[str] = []
+    input_tokens: int = 0
+    output_tokens: int = 0
+    duration_ms: int = 0
+    error: str | None = None
+
+
+class ValidatedSignal(SignalDraft):
+    agent: AgentName
+    signal_type: str
+    threshold: float
+    citation_verified: bool | None = None
+
+
+class SavedSignal(ValidatedSignal):
+    signal_id: uuid.UUID
+    status: Literal["auto_approved", "pending_review", "approved", "rejected"]
+
+
+class RoutingDecision(BaseModel):
+    in_scope: bool = Field(description="Is this a clinical-trial reporting question?")
+    agents: list[AgentName] = []
+    condition_group: ConditionGroup | None = None
+    reason: str = Field(description="One or two sentences, shown in the UI")

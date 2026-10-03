@@ -1,4 +1,4 @@
-from astra.db import execute_many, fetch_one
+from astra.db import execute_many, fetch_all, fetch_one
 from astra.models import ParsedPaper
 
 UPSERT_PAPER = """
@@ -35,4 +35,19 @@ async def paper_counts() -> dict:
                (SELECT count(*) FROM study_papers) AS links,
                (SELECT count(DISTINCT nct_id) FROM study_papers) AS trials_with_papers
         """
+    )
+
+
+async def linked_papers(nct_id: str, limit: int) -> list[dict]:
+    return await fetch_all(
+        """
+        SELECT papers.pmid, papers.title, papers.journal, papers.pub_date, papers.abstract,
+               papers.is_synthetic, study_papers.link_source
+        FROM study_papers
+        JOIN papers USING (pmid)
+        WHERE study_papers.nct_id = %s
+        ORDER BY papers.pub_date DESC NULLS LAST, papers.pmid
+        LIMIT %s
+        """,
+        (nct_id, limit),
     )

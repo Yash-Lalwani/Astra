@@ -1,4 +1,4 @@
-from astra.db import execute, fetch_one
+from astra.db import execute, fetch_all, fetch_one
 
 MIN_TRIALS_FOR_RATE = 3
 
@@ -64,4 +64,38 @@ async def profile_summary() -> dict:
                sum(missing_results) AS missing_results
         FROM sponsor_profiles
         """
+    )
+
+
+async def get_profile(sponsor: str) -> dict | None:
+    """Case-insensitive exact match on the sponsor name."""
+    return await fetch_one(
+        "SELECT * FROM sponsor_profiles WHERE lower(sponsor) = lower(%s)", (sponsor,)
+    )
+
+
+# Fixed ORDER BY fragments; callers pick one by key, so no input reaches the SQL text.
+# Lowest compliance first, because the agents look for poor reporting.
+SPONSOR_ORDER = {
+    "compliance_rate": "compliance_rate ASC NULLS LAST, applicable_completed DESC",
+    "missing_results": "missing_results DESC, sponsor",
+    "total_studies": "total_studies DESC, sponsor",
+}
+
+
+async def list_profiles(
+    condition_group: str | None, min_studies: int, order_by: str, limit: int
+) -> list[dict]:
+    return await fetch_all(
+        f"""
+        SELECT * FROM sponsor_profiles AS profile
+        WHERE total_studies >= %(min_studies)s
+          AND (%(condition_group)s::text IS NULL OR EXISTS (
+                SELECT 1 FROM studies
+                WHERE studies.sponsor = profile.sponsor
+                  AND studies.condition_group = %(condition_group)s))
+        ORDER BY {SPONSOR_ORDER[order_by]}
+        LIMIT %(limit)s
+        """,
+        {"condition_group": condition_group, "min_studies": min_studies, "limit": limit},
     )
