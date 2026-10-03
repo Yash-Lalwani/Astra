@@ -1,0 +1,1366 @@
+{
+ "protocolSection": {
+  "identificationModule": {
+   "nctId": "NCT00799643",
+   "orgStudyIdInfo": {
+    "id": "CHS 06-20-2"
+   },
+   "secondaryIdInfos": [
+    {
+     "id": "U01DK074556",
+     "type": "NIH",
+     "link": "https://reporter.nih.gov/quickSearch/U01DK074556"
+    }
+   ],
+   "organization": {
+    "fullName": "Joslin Diabetes Center",
+    "class": "OTHER"
+   },
+   "briefTitle": "Targeting Inflammation Using Salsalate for Type 2 Diabetes-Stage II",
+   "officialTitle": "Targeting Inflammation in Type 2 Diabetes: Clinical Trial Using Salsalate",
+   "acronym": "TINSALT2D-II"
+  },
+  "statusModule": {
+   "statusVerifiedDate": "2017-11",
+   "overallStatus": "COMPLETED",
+   "expandedAccessInfo": {
+    "hasExpandedAccess": false
+   },
+   "startDateStruct": {
+    "date": "2008-11"
+   },
+   "primaryCompletionDateStruct": {
+    "date": "2012-09",
+    "type": "ACTUAL"
+   },
+   "studyFirstSubmitDate": "2008-11-26",
+   "studyFirstSubmitQcDate": "2008-11-26",
+   "studyFirstPostDateStruct": {
+    "date": "2008-12-01",
+    "type": "ESTIMATED"
+   },
+   "resultsFirstSubmitDate": "2013-09-13",
+   "resultsFirstSubmitQcDate": "2013-09-13",
+   "resultsFirstPostDateStruct": {
+    "date": "2013-11-25",
+    "type": "ESTIMATED"
+   },
+   "lastUpdateSubmitDate": "2017-11-08",
+   "lastUpdatePostDateStruct": {
+    "date": "2017-12-11",
+    "type": "ACTUAL"
+   }
+  },
+  "sponsorCollaboratorsModule": {
+   "responsibleParty": {
+    "type": "SPONSOR"
+   },
+   "leadSponsor": {
+    "name": "Joslin Diabetes Center",
+    "class": "OTHER"
+   },
+   "collaborators": [
+    {
+     "name": "National Institute of Diabetes and Digestive and Kidney Diseases (NIDDK)",
+     "class": "NIH"
+    }
+   ]
+  },
+  "oversightModule": {
+   "oversightHasDmc": true
+  },
+  "descriptionModule": {
+   "briefSummary": "Growing evidence over recent years supports a potential role for low grade chronic inflammation in the pathogenesis of insulin resistance and type 2 diabetes. In this study we will determine whether salsalate, a member of the commonly used Non-Steroidal Anti-Inflammatory Drug (NSAID) class, is effective in lowering sugars in patients with type 2 diabetes. The study will determine whether salicylates represent a new pharmacological option for diabetes management. The study is conducted in two stages. Enrollment in the first stage is complete. The primary objective of the first stage was to select a dose of salsalate that is both well-tolerated and demonstrates a trend toward improvement in glycemic control. The primary objective of Stage 2 of the study is to evaluate the effects of salsalate on blood sugar control in diabetes; the tolerability of salsalate use in patients with type 2 diabetes (T2D); and the effects of salsalate on measures of inflammation, the metabolic syndrome, and cardiac risk."
+  },
+  "conditionsModule": {
+   "conditions": [
+    "Type 2 Diabetes Mellitus"
+   ],
+   "keywords": [
+    "Type 2 Diabetes Mellitus (T2D)",
+    "Inflammation",
+    "Obesity",
+    "Metabolic Syndrome",
+    "Salicylates"
+   ]
+  },
+  "designModule": {
+   "studyType": "INTERVENTIONAL",
+   "phases": [
+    "PHASE2",
+    "PHASE3"
+   ],
+   "designInfo": {
+    "allocation": "RANDOMIZED",
+    "interventionModel": "PARALLEL",
+    "primaryPurpose": "TREATMENT",
+    "maskingInfo": {
+     "masking": "QUADRUPLE",
+     "whoMasked": [
+      "PARTICIPANT",
+      "CARE_PROVIDER",
+      "INVESTIGATOR",
+      "OUTCOMES_ASSESSOR"
+     ]
+    }
+   },
+   "enrollmentInfo": {
+    "count": 638,
+    "type": "ACTUAL"
+   }
+  },
+  "armsInterventionsModule": {
+   "armGroups": [
+    {
+     "label": "1",
+     "type": "ACTIVE_COMPARATOR",
+     "description": "Salsalate, 3.5 g/d orally, divided dosing",
+     "interventionNames": [
+      "Drug: Salsalate"
+     ]
+    },
+    {
+     "label": "2",
+     "type": "PLACEBO_COMPARATOR",
+     "description": "Salsalate Placebo, orally, divided dosing",
+     "interventionNames": [
+      "Drug: Salsalate Placebo"
+     ]
+    }
+   ],
+   "interventions": [
+    {
+     "type": "DRUG",
+     "name": "Salsalate",
+     "description": "Salsalate 3.5 g/d orally, divided dosing",
+     "armGroupLabels": [
+      "1"
+     ],
+     "otherNames": [
+      "disalsid"
+     ]
+    },
+    {
+     "type": "DRUG",
+     "name": "Salsalate Placebo",
+     "armGroupLabels": [
+      "2"
+     ]
+    }
+   ]
+  },
+  "outcomesModule": {
+   "primaryOutcomes": [
+    {
+     "measure": "The Primary Outcome for the TINSAL-T2D Study is Change in HbA1c Level From Baseline to Week 48 From Baseline, Compared Between Treatment Groups.",
+     "description": "HbA1c (%, percentage of HbA1c) change from baseline.",
+     "timeFrame": "48 weeks from baseline"
+    }
+   ],
+   "secondaryOutcomes": [
+    {
+     "measure": "Change From Baseline in Fasting Glucose Over Time.",
+     "timeFrame": "48 weeks from baseline"
+    },
+    {
+     "measure": "Response Rates for Reduction in Fasting Glucose of \u226520 mg/dl, a Reduction in HbA1c of \u22650.5%, and a Reduction in HbA1c of \u22650.8%",
+     "timeFrame": "24 and 48 weeks"
+    },
+    {
+     "measure": "Change in Lipids (Low-density Lipoprotein Cholesterol [LDL-C], Non-high-density Lipoprotein Cholesterol [Non-HDL-C], Triglycerides [TG], Total Cholesterol [TC], High-density Lipoprotein Cholesterol [HDL C], TC/HDL-C Ratio, and LDL-C/HDL-C Ratio)",
+     "timeFrame": "48 weeks"
+    },
+    {
+     "measure": "Changes in WBC and Differential, High-sensitivity C Reactive Protein (hsCRP), Other Inflammatory Markers",
+     "timeFrame": "24 and 48 weeks"
+    },
+    {
+     "measure": "Response Rates for Exceeding Hyperglycemic Targets Between Active and Placebo Treated Groups; Need for Rescue Therapy; Need for Discontinuation of Study Medication",
+     "timeFrame": "24 and 48 weeks"
+    },
+    {
+     "measure": "Response Rates in Patients Initially Treated With Lifestyle Modification, Insulin Secretagogue, Metformin or Combination Therapy",
+     "timeFrame": "24 and 48 weeks"
+    }
+   ]
+  },
+  "eligibilityModule": {
+   "eligibilityCriteria": "Inclusion Criteria:\n\n1. Type 2 diabetes on diet and exercise therapy or monotherapy with metformin, insulin secretagogue (including SFU, non-SFU, and dipeptidyl peptidase IV (DPP-4) inhibitors), alpha-glucosidase inhibitors, or bile acid sequestrants (dosed once per day such that study drug can be administered \u2265 4 hours prior to sequestrant); or a combination of up to two of these at maximal dose. Dosing must be stable for 8 weeks prior to screening. Participant must have been diagnosed with T2D at least 8 weeks before screening.\n2. FPG \u2264 225 mg/dL and HbA1c\u22657% and \u2264 9.5% at screening.\n3. Age \u226518 and \\<75\n4. Women of childbearing potential agree to use an appropriate contraceptive method (hormonal, IUD, or diaphragm)\n\nExclusion Criteria:\n\n1. No prior participation in Stage I of TINSAL-T2D ; exception: a participant who failed screening for HbA1c in Stage I will be allowed to re-screen for Stage II.\n2. Type 1 diabetes and/or history of ketoacidosis determined by medical history\n3. History of severe diabetic neuropathy including autonomic neuropathy, gastroparesis or lower limb ulceration or amputation\n4. History of long-term therapy with insulin (\\>30 days) within the last year\n5. Therapy with rosiglitazone (Avandia) or pioglitazone (Actos), alone or in combination in the previous 6 months; or exendin-4 (Byetta), alone or in combination in the previous 3 months\n6. Pregnancy or lactation\n7. Patients requiring oral corticosteroids within 3 months or recurrent continuous oral corticosteroid treatment (more than 2 weeks)\n8. Use of weight loss drugs \\[e.g., Xenical (orlistat), Meridia (sibutramine), Acutrim (phenylpropanol-amine), or similar over-the-counter medications\\] within 3 months of screening or intentional weight loss of \u2265 10 lbs in the previous 6 months\n9. Surgery within 30 days prior to screening\n10. Serum creatinine \\>1.4 for women and \\>1.5 for men or eGFR \\<60 \\[possible chronic kidney disease stage 3 or greater calculated using the Modification of Diet in Renal Disease (MDRD) equation\n11. History of chronic liver disease including hepatitis B or C\n12. History of peptic ulcer or endoscopy demonstrated gastritis\n13. History of acquired immune deficiency syndrome or human immunodeficiency virus (HIV)\n14. History of malignancy, except participants who have been disease-free for greater than 10 years, or whose only malignancy has been basal or squamous cell skin carcinoma\n15. New York Heart Association Class III or IV cardiac status or hospitalization for congestive heart failure\n16. History of unstable angina, myocardial infarction, cerebrovascular accident, transient ischemic attack or any revascularization within 6 months\n17. Uncontrolled hypertension (defined as systolic blood pressure \\>150 mmHg or diastolic blood pressure \\>95 mmHg on three or more assessments on more than one day). If on blood pressure medications, dosing should be stable for 2 weeks prior to randomization.\n18. History of drug or alcohol abuse, or current weekly alcohol consumption \\>10 units/week (1 unit = 1 beer, 1 glass of wine, 1 mixed DCCktail containing 1 ounce of alcohol)\n19. Hemoglobin \\<12 g/dL (males), \\<10 g/dL (females) at screening\\*\n20. Platelets \\<100,000 cu mm at screening\n21. AST (SGOT) \\>2.50 x ULN or ALT (SGPT) \\>2.50 x ULN at screening\n22. Total Bilirubin \\>1.50 x ULN at screening\n23. Triglycerides (TG) \\>500 mg/dL at screening\n24. Poor mental function or any other reason to expect patient difficulty in complying with the requirements of the study\n25. Previous allergy to aspirin\n26. Chronic or continuous use (daily for more than 7 days) of nonsteroidal anti-inflammatory drugs within the preceding 2 months\n27. Use of warfarin (Coumadin), clopidogrel (Plavix), dipyridamole (Persantine), heparin or other anticoagulants\n28. Use of probenecid (Benemid, probalan), sulfinpyrazone (Anturane) or other uricosuric agents\n29. Macroalbuminuria, defined as spot urine protein \\>300 mcg/mg Cr at screening\n30. Pre-existing chronic tinnitus",
+   "healthyVolunteers": false,
+   "sex": "ALL",
+   "minimumAge": "18 Years",
+   "maximumAge": "75 Years",
+   "stdAges": [
+    "ADULT",
+    "OLDER_ADULT"
+   ]
+  },
+  "contactsLocationsModule": {
+   "overallOfficials": [
+    {
+     "name": "Steven E. Shoelson, MD, PhD",
+     "affiliation": "Joslin Diabetes Center",
+     "role": "PRINCIPAL_INVESTIGATOR"
+    },
+    {
+     "name": "Allison B. Goldfine, MD",
+     "affiliation": "Joslin Diabetes Center",
+     "role": "STUDY_DIRECTOR"
+    },
+    {
+     "name": "Vivian Fonseca, MD",
+     "affiliation": "Tulane University",
+     "role": "STUDY_DIRECTOR"
+    },
+    {
+     "name": "Kathleen Jablonski, PhD",
+     "affiliation": "George Washington University",
+     "role": "STUDY_DIRECTOR"
+    },
+    {
+     "name": "Myrlene Staten, MD",
+     "affiliation": "National Institute of Diabetes & Digestive & Kidney Diseases (NIDDK)",
+     "role": "STUDY_DIRECTOR"
+    }
+   ],
+   "locations": [
+    {
+     "facility": "University of Alabama",
+     "city": "Birmingham",
+     "state": "Alabama",
+     "country": "United States",
+     "geoPoint": {
+      "lat": 33.52066,
+      "lon": -86.80249
+     }
+    },
+    {
+     "facility": "University of California, San Diego",
+     "city": "San Diego",
+     "state": "California",
+     "country": "United States",
+     "geoPoint": {
+      "lat": 32.71571,
+      "lon": -117.16472
+     }
+    },
+    {
+     "facility": "Chapel Medical Group",
+     "city": "New Haven",
+     "state": "Connecticut",
+     "country": "United States",
+     "geoPoint": {
+      "lat": 41.30815,
+      "lon": -72.92816
+     }
+    },
+    {
+     "facility": "Emory University School of Medicine",
+     "city": "Atlanta",
+     "state": "Georgia",
+     "country": "United States",
+     "geoPoint": {
+      "lat": 33.749,
+      "lon": -84.38798
+     }
+    },
+    {
+     "facility": "Kaiser Permanente",
+     "city": "Tucker",
+     "state": "Georgia",
+     "country": "United States",
+     "geoPoint": {
+      "lat": 33.85455,
+      "lon": -84.21714
+     }
+    },
+    {
+     "facility": "Indiana University",
+     "city": "Indianapolis",
+     "state": "Indiana",
+     "country": "United States",
+     "geoPoint": {
+      "lat": 39.76838,
+      "lon": -86.15804
+     }
+    },
+    {
+     "facility": "Tulane University Health Sciences Center",
+     "city": "New Orleans",
+     "state": "Louisiana",
+     "country": "United States",
+     "geoPoint": {
+      "lat": 29.95465,
+      "lon": -90.07507
+     }
+    },
+    {
+     "facility": "Medstar Research Institute",
+     "city": "Hyattsville",
+     "state": "Maryland",
+     "country": "United States",
+     "geoPoint": {
+      "lat": 38.95594,
+      "lon": -76.94553
+     }
+    },
+    {
+     "facility": "Dr. Rudo, Westminster, MD",
+     "city": "Westminster",
+     "state": "Maryland",
+     "zip": "21157",
+     "country": "United States",
+     "geoPoint": {
+      "lat": 39.57538,
+      "lon": -76.99581
+     }
+    },
+    {
+     "facility": "Joslin Diabetes Center",
+     "city": "Boston",
+     "state": "Massachusetts",
+     "zip": "02215",
+     "country": "United States",
+     "geoPoint": {
+      "lat": 42.35843,
+      "lon": -71.05977
+     }
+    },
+    {
+     "facility": "University of Michigan",
+     "city": "Ann Arbor",
+     "state": "Michigan",
+     "zip": "48106",
+     "country": "United States",
+     "geoPoint": {
+      "lat": 42.27756,
+      "lon": -83.74088
+     }
+    },
+    {
+     "facility": "Washington University School of Medicine",
+     "city": "St Louis",
+     "state": "Missouri",
+     "country": "United States",
+     "geoPoint": {
+      "lat": 38.62727,
+      "lon": -90.19789
+     }
+    },
+    {
+     "facility": "University of Nebraska Medical Center",
+     "city": "Omaha",
+     "state": "Nebraska",
+     "country": "United States",
+     "geoPoint": {
+      "lat": 41.25626,
+      "lon": -95.94043
+     }
+    },
+    {
+     "facility": "North Shore Diabetes and Endocrine Associates",
+     "city": "New Hyde Park",
+     "state": "New York",
+     "country": "United States",
+     "geoPoint": {
+      "lat": 40.7351,
+      "lon": -73.68791
+     }
+    },
+    {
+     "facility": "Columbia University",
+     "city": "New York",
+     "state": "New York",
+     "country": "United States",
+     "geoPoint": {
+      "lat": 40.71427,
+      "lon": -74.00597
+     }
+    },
+    {
+     "facility": "Lang Medical Center",
+     "city": "Queens",
+     "state": "New York",
+     "country": "United States",
+     "geoPoint": {
+      "lat": 40.68149,
+      "lon": -73.83652
+     }
+    },
+    {
+     "facility": "Albert Einstein College of Medicine",
+     "city": "The Bronx",
+     "state": "New York",
+     "country": "United States",
+     "geoPoint": {
+      "lat": 40.84985,
+      "lon": -73.86641
+     }
+    },
+    {
+     "facility": "Carolina's Health Care",
+     "city": "Charlotte",
+     "state": "North Carolina",
+     "country": "United States",
+     "geoPoint": {
+      "lat": 35.22709,
+      "lon": -80.84313
+     }
+    },
+    {
+     "facility": "University of North Carolina",
+     "city": "Durham",
+     "state": "North Carolina",
+     "country": "United States",
+     "geoPoint": {
+      "lat": 35.99403,
+      "lon": -78.89862
+     }
+    },
+    {
+     "facility": "University of Texas Southwestern",
+     "city": "Dallas",
+     "state": "Texas",
+     "country": "United States",
+     "geoPoint": {
+      "lat": 32.78306,
+      "lon": -96.80667
+     }
+    },
+    {
+     "facility": "Scott and White",
+     "city": "Temple",
+     "state": "Texas",
+     "country": "United States",
+     "geoPoint": {
+      "lat": 31.09823,
+      "lon": -97.34278
+     }
+    }
+   ]
+  },
+  "referencesModule": {
+   "references": [
+    {
+     "pmid": "16823477",
+     "type": "BACKGROUND",
+     "citation": "Shoelson SE, Lee J, Goldfine AB. Inflammation and insulin resistance. J Clin Invest. 2006 Jul;116(7):1793-801. doi: 10.1172/JCI29069."
+    },
+    {
+     "pmid": "17959861",
+     "type": "BACKGROUND",
+     "citation": "Fleischman A, Shoelson SE, Bernier R, Goldfine AB. Salsalate improves glycemia and inflammatory parameters in obese young adults. Diabetes Care. 2008 Feb;31(2):289-94. doi: 10.2337/dc07-1338. Epub 2007 Oct 24."
+    },
+    {
+     "pmid": "19337387",
+     "type": "BACKGROUND",
+     "citation": "Goldfine AB, Silver R, Aldhahi W, Cai D, Tatro E, Lee J, Shoelson SE. Use of salsalate to target inflammation in the treatment of insulin resistance and type 2 diabetes. Clin Transl Sci. 2008 May;1(1):36-43. doi: 10.1111/j.1752-8062.2008.00026.x."
+    },
+    {
+     "pmid": "20231565",
+     "type": "BACKGROUND",
+     "citation": "Goldfine AB, Fonseca V, Jablonski KA, Pyle L, Staten MA, Shoelson SE; TINSAL-T2D (Targeting Inflammation Using Salsalate in Type 2 Diabetes) Study Team. The effects of salsalate on glycemic control in patients with type 2 diabetes: a randomized trial. Ann Intern Med. 2010 Mar 16;152(6):346-57. doi: 10.7326/0003-4819-152-6-201003160-00004."
+    },
+    {
+     "pmid": "23817699",
+     "type": "RESULT",
+     "citation": "Goldfine AB, Fonseca V, Jablonski KA, Chen YD, Tipton L, Staten MA, Shoelson SE; Targeting Inflammation Using Salsalate in Type 2 Diabetes Study Team. Salicylate (salsalate) in patients with type 2 diabetes: a randomized trial. Ann Intern Med. 2013 Jul 2;159(1):1-12. doi: 10.7326/0003-4819-159-1-201307020-00003."
+    },
+    {
+     "pmid": "24130358",
+     "type": "DERIVED",
+     "citation": "Goldfine AB, Buck JS, Desouza C, Fonseca V, Chen YD, Shoelson SE, Jablonski KA, Creager MA; TINSAL-FMD (Targeting Inflammation Using Salsalate in Type 2 Diabetes-Flow-Mediated Dilation) Ancillary Study Team. Targeting inflammation using salsalate in patients with type 2 diabetes: effects on flow-mediated dilation (TINSAL-FMD). Diabetes Care. 2013 Dec;36(12):4132-9. doi: 10.2337/dc13-0859. Epub 2013 Oct 15."
+    }
+   ]
+  }
+ },
+ "resultsSection": {
+  "participantFlowModule": {
+   "preAssignmentDetails": "The Enrollment number in the protocol section (638) is higher than the number of participants Started in the Participant Flow module (286) due to screen failures and drop out prior to randomization.",
+   "groups": [
+    {
+     "id": "FG000",
+     "title": "Placebo",
+     "description": "Placebo for salsalate, orally, divided dosing"
+    },
+    {
+     "id": "FG001",
+     "title": "Salsalate",
+     "description": "Salsalate, 3.5 g/d orally,divided dosing"
+    }
+   ],
+   "periods": [
+    {
+     "title": "Overall Study",
+     "milestones": [
+      {
+       "type": "STARTED",
+       "achievements": [
+        {
+         "groupId": "FG000",
+         "numSubjects": "140"
+        },
+        {
+         "groupId": "FG001",
+         "numSubjects": "146"
+        }
+       ]
+      },
+      {
+       "type": "COMPLETED",
+       "achievements": [
+        {
+         "groupId": "FG000",
+         "numSubjects": "115"
+        },
+        {
+         "groupId": "FG001",
+         "numSubjects": "119"
+        }
+       ]
+      },
+      {
+       "type": "NOT COMPLETED",
+       "achievements": [
+        {
+         "groupId": "FG000",
+         "numSubjects": "25"
+        },
+        {
+         "groupId": "FG001",
+         "numSubjects": "27"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "baselineCharacteristicsModule": {
+   "groups": [
+    {
+     "id": "BG000",
+     "title": "Placebo",
+     "description": "Placebo for salsalate, orally, divided dosing"
+    },
+    {
+     "id": "BG001",
+     "title": "Salsalate",
+     "description": "Salsalate, 3.5 g/d orally, divided dosing"
+    },
+    {
+     "id": "BG002",
+     "title": "Total",
+     "description": "Total of all reporting groups"
+    }
+   ],
+   "denoms": [
+    {
+     "units": "Participants",
+     "counts": [
+      {
+       "groupId": "BG000",
+       "value": "140"
+      },
+      {
+       "groupId": "BG001",
+       "value": "146"
+      },
+      {
+       "groupId": "BG002",
+       "value": "286"
+      }
+     ]
+    }
+   ],
+   "measures": [
+    {
+     "title": "Age, Categorical",
+     "paramType": "COUNT_OF_PARTICIPANTS",
+     "unitOfMeasure": "Participants",
+     "classes": [
+      {
+       "categories": [
+        {
+         "title": "<=18 years",
+         "measurements": [
+          {
+           "groupId": "BG000",
+           "value": "0"
+          },
+          {
+           "groupId": "BG001",
+           "value": "0"
+          },
+          {
+           "groupId": "BG002",
+           "value": "0"
+          }
+         ]
+        },
+        {
+         "title": "Between 18 and 65 years",
+         "measurements": [
+          {
+           "groupId": "BG000",
+           "value": "112"
+          },
+          {
+           "groupId": "BG001",
+           "value": "118"
+          },
+          {
+           "groupId": "BG002",
+           "value": "230"
+          }
+         ]
+        },
+        {
+         "title": ">=65 years",
+         "measurements": [
+          {
+           "groupId": "BG000",
+           "value": "28"
+          },
+          {
+           "groupId": "BG001",
+           "value": "28"
+          },
+          {
+           "groupId": "BG002",
+           "value": "56"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Age, Continuous",
+     "paramType": "MEAN",
+     "dispersionType": "STANDARD_DEVIATION",
+     "unitOfMeasure": "years",
+     "classes": [
+      {
+       "categories": [
+        {
+         "measurements": [
+          {
+           "groupId": "BG000",
+           "value": "55.8",
+           "spread": "10"
+          },
+          {
+           "groupId": "BG001",
+           "value": "55.8",
+           "spread": "9.2"
+          },
+          {
+           "groupId": "BG002",
+           "value": "55.8",
+           "spread": "9.6"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Sex: Female, Male",
+     "paramType": "COUNT_OF_PARTICIPANTS",
+     "unitOfMeasure": "Participants",
+     "classes": [
+      {
+       "categories": [
+        {
+         "title": "Female",
+         "measurements": [
+          {
+           "groupId": "BG000",
+           "value": "65"
+          },
+          {
+           "groupId": "BG001",
+           "value": "64"
+          },
+          {
+           "groupId": "BG002",
+           "value": "129"
+          }
+         ]
+        },
+        {
+         "title": "Male",
+         "measurements": [
+          {
+           "groupId": "BG000",
+           "value": "75"
+          },
+          {
+           "groupId": "BG001",
+           "value": "82"
+          },
+          {
+           "groupId": "BG002",
+           "value": "157"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "title": "Region of Enrollment",
+     "paramType": "NUMBER",
+     "unitOfMeasure": "participants",
+     "classes": [
+      {
+       "title": "United States",
+       "categories": [
+        {
+         "measurements": [
+          {
+           "groupId": "BG000",
+           "value": "140"
+          },
+          {
+           "groupId": "BG001",
+           "value": "146"
+          },
+          {
+           "groupId": "BG002",
+           "value": "286"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  "outcomeMeasuresModule": {
+   "outcomeMeasures": [
+    {
+     "type": "PRIMARY",
+     "title": "The Primary Outcome for the TINSAL-T2D Study is Change in HbA1c Level From Baseline to Week 48 From Baseline, Compared Between Treatment Groups.",
+     "description": "HbA1c (%, percentage of HbA1c) change from baseline.",
+     "populationDescription": "Participants with complete data at both Baseline and 48 weeks",
+     "reportingStatus": "POSTED",
+     "paramType": "MEAN",
+     "dispersionType": "95% Confidence Interval",
+     "unitOfMeasure": "HbA1c units are %",
+     "timeFrame": "48 weeks from baseline",
+     "groups": [
+      {
+       "id": "OG000",
+       "title": "Placebo",
+       "description": "Placebo for salsalate, orally, divided dosing"
+      },
+      {
+       "id": "OG001",
+       "title": "Salsalate",
+       "description": "Salsalate, 3.5 g/d orally, divided dosing"
+      }
+     ],
+     "denoms": [
+      {
+       "units": "Participants",
+       "counts": [
+        {
+         "groupId": "OG000",
+         "value": "137"
+        },
+        {
+         "groupId": "OG001",
+         "value": "146"
+        }
+       ]
+      }
+     ],
+     "classes": [
+      {
+       "categories": [
+        {
+         "measurements": [
+          {
+           "groupId": "OG000",
+           "value": "-0.04",
+           "lowerLimit": "-0.07",
+           "upperLimit": "0.15"
+          },
+          {
+           "groupId": "OG001",
+           "value": "-0.33",
+           "lowerLimit": "-0.44",
+           "upperLimit": "-0.22"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "SECONDARY",
+     "title": "Change From Baseline in Fasting Glucose Over Time.",
+     "populationDescription": "Participants with complete data at both Baseline and 48 weeks",
+     "reportingStatus": "POSTED",
+     "paramType": "MEAN",
+     "dispersionType": "95% Confidence Interval",
+     "unitOfMeasure": "mg/dl",
+     "timeFrame": "48 weeks from baseline",
+     "groups": [
+      {
+       "id": "OG000",
+       "title": "Placebo",
+       "description": "Placebo for salsalate, orally, divided dosing"
+      },
+      {
+       "id": "OG001",
+       "title": "Salsalate",
+       "description": "Salsalate, 3.5 g/d orally,divided dosing"
+      }
+     ],
+     "denoms": [
+      {
+       "units": "Participants",
+       "counts": [
+        {
+         "groupId": "OG000",
+         "value": "137"
+        },
+        {
+         "groupId": "OG001",
+         "value": "146"
+        }
+       ]
+      }
+     ],
+     "classes": [
+      {
+       "categories": [
+        {
+         "measurements": [
+          {
+           "groupId": "OG000",
+           "value": "2.0",
+           "lowerLimit": "-1.9",
+           "upperLimit": "5.9"
+          },
+          {
+           "groupId": "OG001",
+           "value": "-13.1",
+           "lowerLimit": "-16.9",
+           "upperLimit": "-9.2"
+          }
+         ]
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "type": "SECONDARY",
+     "title": "Response Rates for Reduction in Fasting Glucose of \u226520 mg/dl, a Reduction in HbA1c of \u22650.5%, and a Reduction in HbA1c of \u22650.8%",
+     "reportingStatus": "NOT_POSTED",
+     "timeFrame": "24 and 48 weeks",
+     "denomUnitsSelected": "Participants"
+    },
+    {
+     "type": "SECONDARY",
+     "title": "Change in Lipids (Low-density Lipoprotein Cholesterol [LDL-C], Non-high-density Lipoprotein Cholesterol [Non-HDL-C], Triglycerides [TG], Total Cholesterol [TC], High-density Lipoprotein Cholesterol [HDL C], TC/HDL-C Ratio, and LDL-C/HDL-C Ratio)",
+     "reportingStatus": "NOT_POSTED",
+     "timeFrame": "48 weeks",
+     "denomUnitsSelected": "Participants"
+    },
+    {
+     "type": "SECONDARY",
+     "title": "Changes in WBC and Differential, High-sensitivity C Reactive Protein (hsCRP), Other Inflammatory Markers",
+     "reportingStatus": "NOT_POSTED",
+     "timeFrame": "24 and 48 weeks",
+     "denomUnitsSelected": "Participants"
+    },
+    {
+     "type": "SECONDARY",
+     "title": "Response Rates for Exceeding Hyperglycemic Targets Between Active and Placebo Treated Groups; Need for Rescue Therapy; Need for Discontinuation of Study Medication",
+     "reportingStatus": "NOT_POSTED",
+     "timeFrame": "24 and 48 weeks",
+     "denomUnitsSelected": "Participants"
+    },
+    {
+     "type": "SECONDARY",
+     "title": "Response Rates in Patients Initially Treated With Lifestyle Modification, Insulin Secretagogue, Metformin or Combination Therapy",
+     "reportingStatus": "NOT_POSTED",
+     "timeFrame": "24 and 48 weeks",
+     "denomUnitsSelected": "Participants"
+    }
+   ]
+  },
+  "adverseEventsModule": {
+   "frequencyThreshold": "5",
+   "timeFrame": "48 weeks",
+   "eventGroups": [
+    {
+     "id": "EG000",
+     "title": "Placebo",
+     "description": "Placebo for salsalate, orally, divided dosing",
+     "seriousNumAffected": 6,
+     "seriousNumAtRisk": 140,
+     "otherNumAffected": 64,
+     "otherNumAtRisk": 140
+    },
+    {
+     "id": "EG001",
+     "title": "Salsalate",
+     "description": "Salsalate, 3.5 g/d orally,divided dosing",
+     "seriousNumAffected": 10,
+     "seriousNumAtRisk": 146,
+     "otherNumAffected": 85,
+     "otherNumAtRisk": 146
+    }
+   ],
+   "seriousEvents": [
+    {
+     "term": "Hematuria/Bladder Cancer",
+     "organSystem": "Renal and urinary disorders",
+     "assessmentType": "SYSTEMATIC_ASSESSMENT",
+     "stats": [
+      {
+       "groupId": "EG000",
+       "numEvents": 0,
+       "numAffected": 0,
+       "numAtRisk": 140
+      },
+      {
+       "groupId": "EG001",
+       "numEvents": 1,
+       "numAffected": 1,
+       "numAtRisk": 146
+      }
+     ]
+    },
+    {
+     "term": "Benign Prostate Hypertrophy/TURP",
+     "organSystem": "Renal and urinary disorders",
+     "assessmentType": "SYSTEMATIC_ASSESSMENT",
+     "stats": [
+      {
+       "groupId": "EG000",
+       "numEvents": 1,
+       "numAffected": 1,
+       "numAtRisk": 140
+      },
+      {
+       "groupId": "EG001",
+       "numEvents": 1,
+       "numAffected": 1,
+       "numAtRisk": 146
+      }
+     ]
+    },
+    {
+     "term": "Chronic Lymphoid Leukemia",
+     "organSystem": "Blood and lymphatic system disorders",
+     "assessmentType": "SYSTEMATIC_ASSESSMENT",
+     "stats": [
+      {
+       "groupId": "EG000",
+       "numEvents": 1,
+       "numAffected": 1,
+       "numAtRisk": 140
+      },
+      {
+       "groupId": "EG001",
+       "numEvents": 0,
+       "numAffected": 0,
+       "numAtRisk": 146
+      }
+     ]
+    },
+    {
+     "term": "Gallstones/Cholycystectomy",
+     "organSystem": "Hepatobiliary disorders",
+     "assessmentType": "SYSTEMATIC_ASSESSMENT",
+     "stats": [
+      {
+       "groupId": "EG000",
+       "numEvents": 0,
+       "numAffected": 0,
+       "numAtRisk": 140
+      },
+      {
+       "groupId": "EG001",
+       "numEvents": 1,
+       "numAffected": 1,
+       "numAtRisk": 146
+      }
+     ]
+    },
+    {
+     "term": "Kidney Stone",
+     "organSystem": "Renal and urinary disorders",
+     "assessmentType": "SYSTEMATIC_ASSESSMENT",
+     "stats": [
+      {
+       "groupId": "EG000",
+       "numEvents": 0,
+       "numAffected": 0,
+       "numAtRisk": 140
+      },
+      {
+       "groupId": "EG001",
+       "numEvents": 2,
+       "numAffected": 2,
+       "numAtRisk": 146
+      }
+     ]
+    },
+    {
+     "term": "Reactive Airway Disease",
+     "organSystem": "Respiratory, thoracic and mediastinal disorders",
+     "assessmentType": "SYSTEMATIC_ASSESSMENT",
+     "stats": [
+      {
+       "groupId": "EG000",
+       "numEvents": 1,
+       "numAffected": 1,
+       "numAtRisk": 140
+      },
+      {
+       "groupId": "EG001",
+       "numEvents": 0,
+       "numAffected": 0,
+       "numAtRisk": 146
+      }
+     ]
+    },
+    {
+     "term": "Degenerative Joint Disease",
+     "organSystem": "Musculoskeletal and connective tissue disorders",
+     "assessmentType": "SYSTEMATIC_ASSESSMENT",
+     "stats": [
+      {
+       "groupId": "EG000",
+       "numEvents": 0,
+       "numAffected": 0,
+       "numAtRisk": 140
+      },
+      {
+       "groupId": "EG001",
+       "numEvents": 1,
+       "numAffected": 1,
+       "numAtRisk": 146
+      }
+     ]
+    },
+    {
+     "term": "Cellulitis",
+     "organSystem": "Skin and subcutaneous tissue disorders",
+     "assessmentType": "SYSTEMATIC_ASSESSMENT",
+     "stats": [
+      {
+       "groupId": "EG000",
+       "numEvents": 0,
+       "numAffected": 0,
+       "numAtRisk": 140
+      },
+      {
+       "groupId": "EG001",
+       "numEvents": 1,
+       "numAffected": 1,
+       "numAtRisk": 146
+      }
+     ]
+    },
+    {
+     "term": "Traumatic Fracture or Joint Diastasis",
+     "organSystem": "Musculoskeletal and connective tissue disorders",
+     "assessmentType": "SYSTEMATIC_ASSESSMENT",
+     "stats": [
+      {
+       "groupId": "EG000",
+       "numEvents": 0,
+       "numAffected": 0,
+       "numAtRisk": 140
+      },
+      {
+       "groupId": "EG001",
+       "numEvents": 2,
+       "numAffected": 2,
+       "numAtRisk": 146
+      }
+     ]
+    },
+    {
+     "term": "Prostate Cancer",
+     "organSystem": "Neoplasms benign, malignant and unspecified (incl cysts and polyps)",
+     "assessmentType": "SYSTEMATIC_ASSESSMENT",
+     "stats": [
+      {
+       "groupId": "EG000",
+       "numEvents": 2,
+       "numAffected": 2,
+       "numAtRisk": 140
+      },
+      {
+       "groupId": "EG001",
+       "numEvents": 0,
+       "numAffected": 0,
+       "numAtRisk": 146
+      }
+     ]
+    },
+    {
+     "term": "Cervical Disectomy",
+     "organSystem": "Musculoskeletal and connective tissue disorders",
+     "assessmentType": "SYSTEMATIC_ASSESSMENT",
+     "stats": [
+      {
+       "groupId": "EG000",
+       "numEvents": 1,
+       "numAffected": 1,
+       "numAtRisk": 140
+      },
+      {
+       "groupId": "EG001",
+       "numEvents": 0,
+       "numAffected": 0,
+       "numAtRisk": 146
+      }
+     ]
+    },
+    {
+     "term": "Peripheral Vascular Disease",
+     "organSystem": "Vascular disorders",
+     "assessmentType": "SYSTEMATIC_ASSESSMENT",
+     "stats": [
+      {
+       "groupId": "EG000",
+       "numEvents": 0,
+       "numAffected": 0,
+       "numAtRisk": 140
+      },
+      {
+       "groupId": "EG001",
+       "numEvents": 1,
+       "numAffected": 1,
+       "numAtRisk": 146
+      }
+     ]
+    }
+   ],
+   "otherEvents": [
+    {
+     "term": "Tinnitus",
+     "organSystem": "Ear and labyrinth disorders",
+     "assessmentType": "SYSTEMATIC_ASSESSMENT",
+     "stats": [
+      {
+       "groupId": "EG000",
+       "numAffected": 7,
+       "numAtRisk": 140
+      },
+      {
+       "groupId": "EG001",
+       "numAffected": 16,
+       "numAtRisk": 146
+      }
+     ]
+    },
+    {
+     "term": "Cough",
+     "organSystem": "Respiratory, thoracic and mediastinal disorders",
+     "assessmentType": "SYSTEMATIC_ASSESSMENT",
+     "stats": [
+      {
+       "groupId": "EG000",
+       "numAffected": 19,
+       "numAtRisk": 140
+      },
+      {
+       "groupId": "EG001",
+       "numAffected": 20,
+       "numAtRisk": 146
+      }
+     ]
+    },
+    {
+     "term": "Vomiting",
+     "organSystem": "Gastrointestinal disorders",
+     "assessmentType": "SYSTEMATIC_ASSESSMENT",
+     "stats": [
+      {
+       "groupId": "EG000",
+       "numAffected": 10,
+       "numAtRisk": 140
+      },
+      {
+       "groupId": "EG001",
+       "numAffected": 11,
+       "numAtRisk": 146
+      }
+     ]
+    },
+    {
+     "term": "Muscle Stiffness",
+     "organSystem": "Musculoskeletal and connective tissue disorders",
+     "assessmentType": "SYSTEMATIC_ASSESSMENT",
+     "stats": [
+      {
+       "groupId": "EG000",
+       "numAffected": 9,
+       "numAtRisk": 140
+      },
+      {
+       "groupId": "EG001",
+       "numAffected": 14,
+       "numAtRisk": 146
+      }
+     ]
+    },
+    {
+     "term": "Dizzy",
+     "organSystem": "General disorders",
+     "assessmentType": "SYSTEMATIC_ASSESSMENT",
+     "stats": [
+      {
+       "groupId": "EG000",
+       "numAffected": 10,
+       "numAtRisk": 140
+      },
+      {
+       "groupId": "EG001",
+       "numAffected": 11,
+       "numAtRisk": 146
+      }
+     ]
+    },
+    {
+     "term": "Weakness or Fatigue",
+     "organSystem": "General disorders",
+     "assessmentType": "SYSTEMATIC_ASSESSMENT",
+     "stats": [
+      {
+       "groupId": "EG000",
+       "numAffected": 9,
+       "numAtRisk": 140
+      },
+      {
+       "groupId": "EG001",
+       "numAffected": 13,
+       "numAtRisk": 146
+      }
+     ]
+    }
+   ]
+  },
+  "moreInfoModule": {
+   "certainAgreement": {
+    "piSponsorEmployee": false,
+    "restrictiveAgreement": false
+   },
+   "pointOfContact": {
+    "title": "Allison B.Goldfine",
+    "organization": "Joslin Diabetes Center",
+    "email": "allison.goldfine@joslin.harvard.edu",
+    "phone": "617-309-2400"
+   }
+  }
+ },
+ "derivedSection": {
+  "miscInfoModule": {
+   "versionHolder": "2026-10-01"
+  },
+  "conditionBrowseModule": {
+   "meshes": [
+    {
+     "id": "D003924",
+     "term": "Diabetes Mellitus, Type 2"
+    },
+    {
+     "id": "D007249",
+     "term": "Inflammation"
+    },
+    {
+     "id": "D009765",
+     "term": "Obesity"
+    },
+    {
+     "id": "D024821",
+     "term": "Metabolic Syndrome"
+    }
+   ],
+   "ancestors": [
+    {
+     "id": "D003920",
+     "term": "Diabetes Mellitus"
+    },
+    {
+     "id": "D044882",
+     "term": "Glucose Metabolism Disorders"
+    },
+    {
+     "id": "D008659",
+     "term": "Metabolic Diseases"
+    },
+    {
+     "id": "D009750",
+     "term": "Nutritional and Metabolic Diseases"
+    },
+    {
+     "id": "D004700",
+     "term": "Endocrine System Diseases"
+    },
+    {
+     "id": "D010335",
+     "term": "Pathologic Processes"
+    },
+    {
+     "id": "D013568",
+     "term": "Pathological Conditions, Signs and Symptoms"
+    },
+    {
+     "id": "D050177",
+     "term": "Overweight"
+    },
+    {
+     "id": "D044343",
+     "term": "Overnutrition"
+    },
+    {
+     "id": "D009748",
+     "term": "Nutrition Disorders"
+    },
+    {
+     "id": "D001835",
+     "term": "Body Weight"
+    },
+    {
+     "id": "D012816",
+     "term": "Signs and Symptoms"
+    },
+    {
+     "id": "D007333",
+     "term": "Insulin Resistance"
+    },
+    {
+     "id": "D006946",
+     "term": "Hyperinsulinism"
+    }
+   ]
+  },
+  "interventionBrowseModule": {
+   "meshes": [
+    {
+     "id": "C014182",
+     "term": "salicylsalicylic acid"
+    }
+   ]
+  }
+ },
+ "hasResults": true
+}

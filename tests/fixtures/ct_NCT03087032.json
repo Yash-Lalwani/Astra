@@ -1,0 +1,387 @@
+{
+ "protocolSection": {
+  "identificationModule": {
+   "nctId": "NCT03087032",
+   "orgStudyIdInfo": {
+    "id": "KYH2017-002"
+   },
+   "organization": {
+    "fullName": "The First Affiliated Hospital of Xiamen University",
+    "class": "OTHER"
+   },
+   "briefTitle": "Liraglutide-bolus vs Glargine-bolus Therapy in Overweight/Obese Type 2 Diabetes Patients (LiraGooD)",
+   "officialTitle": "Efficacy and Safety of Liraglutide-bolus (Liraglutide Plus Prandial Insulin) Versus Glargine-bolus Therapy in Overweight / Obese Patients With Uncontrolled Type 2 Diabetes (LiraGooD)--A Multicenter Randomized Controlled Study",
+   "acronym": "LiraGooD"
+  },
+  "statusModule": {
+   "statusVerifiedDate": "2025-01",
+   "overallStatus": "RECRUITING",
+   "expandedAccessInfo": {
+    "hasExpandedAccess": false
+   },
+   "startDateStruct": {
+    "date": "2019-01-10",
+    "type": "ACTUAL"
+   },
+   "primaryCompletionDateStruct": {
+    "date": "2025-01-15",
+    "type": "ESTIMATED"
+   },
+   "completionDateStruct": {
+    "date": "2025-02-10",
+    "type": "ESTIMATED"
+   },
+   "studyFirstSubmitDate": "2017-03-08",
+   "studyFirstSubmitQcDate": "2017-03-16",
+   "studyFirstPostDateStruct": {
+    "date": "2017-03-22",
+    "type": "ACTUAL"
+   },
+   "lastUpdateSubmitDate": "2025-01-09",
+   "lastUpdatePostDateStruct": {
+    "date": "2025-01-13",
+    "type": "ACTUAL"
+   }
+  },
+  "sponsorCollaboratorsModule": {
+   "responsibleParty": {
+    "type": "SPONSOR"
+   },
+   "leadSponsor": {
+    "name": "The First Affiliated Hospital of Xiamen University",
+    "class": "OTHER"
+   }
+  },
+  "oversightModule": {
+   "oversightHasDmc": true,
+   "isFdaRegulatedDrug": false,
+   "isFdaRegulatedDevice": false,
+   "isUsExport": false
+  },
+  "descriptionModule": {
+   "briefSummary": "The present 24-week, prospective, open-label, randomized, multicenter, parallel group trial is carried to investigate and evaluate the efficacy and safety of Liraglutide in combination with prandial insulin therapy vs insulin glargine in combination with prandial insulin therapy in overweight / obese patients with uncontrolled type 2 diabetes.",
+   "detailedDescription": "An increasing number of patients with type 2 diabetes are treated with insulin. Patients with diabetes receiving intensive insulin therapy with various combinations of basal and prandial insulin can be caught in a vicious but common cycle, whereby insulin requirements increase over time, and this in turn contributes to weight gain and hypoglycemia and further increases in insulin dosing. At this stage, clinicians observe a practical limit to the efficacy of insulin titration alone on glucose-lowering and often add or continue metformin to reduce insulin resistance. Injectable glucagon-like peptide-1 receptor agonists (GLP-1 RAs), such as liraglutide, are a relatively new addition to our treatment armamentarium. These drugs improve glucose control and insulin sensitivity and contribute to weight loss. Treatment with basal insulin plus GLP-1RAs is well-established in diabetes guidelines and may be as effective as adding prandial insulin therapy. When GLP-1 RAs are started, a preemptive reduction in insulin dosage by 25% to 30% in patients with HbA1c \\< 9% may reduce the risk for hypoglycemia. In overweight/obese patients with uncontrolled type 2 diabetes treated with more than three oral antidiabetic drugs (OADs) or high doses of premix insulin, Is basal-prandial insulin therapy the option treatment algorithm? Such an intensification strategy carries risk of increased hypoglycaemia and weight gain, both of which are associated with worse long-term outcomes. There have no randomized, controlled trials to evaluate the efficacy and safety of GLP-1 RAs vs insulin glargine added to prandial insulin in overweight/obese patients with uncontrolled type 2 diabetes. So, the current 24-week, prospective, open-label, randomized, multicenter, parallel group trial will be preformed to assess whether Liraglutide plus prandial insulin therapy was superior to glargine plus prandial insulin therapy in overweight/obese patients with uncontrolled type 2 diabetes."
+  },
+  "conditionsModule": {
+   "conditions": [
+    "Type 2 Diabetes Patients",
+    "Overweight and Obesity",
+    "Hyperglycaemia (Diabetic)"
+   ],
+   "keywords": [
+    "Liraglutide",
+    "Insulin Glargine",
+    "Prandial Insulin"
+   ]
+  },
+  "designModule": {
+   "studyType": "INTERVENTIONAL",
+   "phases": [
+    "PHASE4"
+   ],
+   "designInfo": {
+    "allocation": "RANDOMIZED",
+    "interventionModel": "PARALLEL",
+    "primaryPurpose": "TREATMENT",
+    "maskingInfo": {
+     "masking": "NONE"
+    }
+   },
+   "enrollmentInfo": {
+    "count": 164,
+    "type": "ESTIMATED"
+   }
+  },
+  "armsInterventionsModule": {
+   "armGroups": [
+    {
+     "label": "Liraglutide-bolus",
+     "type": "EXPERIMENTAL",
+     "description": "'Liraglutide-bolus'(Liraglutide once-daily plus thrice-daily prandial insulin lispro). Patients will receive adding Liraglutide to prandial insulin Lispro. The starting liraglutide dose was 0.6mg/day, then 1.2mg/day after 1 week and 1.8mg/day after a further week. The dose was maintained until study completion. Dose of insulin Lispro will be instructed on a titration schedule, adjusted every 3 days.",
+     "interventionNames": [
+      "Drug: Liraglutide"
+     ]
+    },
+    {
+     "label": "Basal-bolus",
+     "type": "ACTIVE_COMPARATOR",
+     "description": "'Basal-bolus' (insulin glargine once-daily plus thrice-daily prandial insulin lispro). Patients will receive adding insulin Glargine to prandial insulin Lispro.Dose of insulin will be instructed on a titration schedule, adjusted every 3 days. Patients subcutaneously self-injected once-daily at approximately the same time each day.",
+     "interventionNames": [
+      "Drug: insulin glargine"
+     ]
+    }
+   ],
+   "interventions": [
+    {
+     "type": "DRUG",
+     "name": "Liraglutide",
+     "description": "Patients will receive adding Liraglutide to prandial insulin Lispro. The starting liraglutide dose was 0.6mg/day, then 1.2mg/day after 1 week and 1.8mg/day after a further week. The dose was maintained until study completion. Dose of insulin Lispro will be instructed on a titration schedule, adjusted every 3 days.",
+     "armGroupLabels": [
+      "Liraglutide-bolus"
+     ],
+     "otherNames": [
+      "Victozaa",
+      "Liraglutid",
+      "Liroglutide",
+      "Liraglutidum",
+      "Liraglutide Acetate"
+     ]
+    },
+    {
+     "type": "DRUG",
+     "name": "insulin glargine",
+     "description": "Individuals randomized to adding insulin Glargine to prandial insulin Lispro will be instructed on a titration schedule, adjusted every 3 days. Patients subcutaneously self-injected once-daily at approximately the same time each day.",
+     "armGroupLabels": [
+      "Basal-bolus"
+     ],
+     "otherNames": [
+      "Lantus"
+     ]
+    }
+   ]
+  },
+  "outcomesModule": {
+   "primaryOutcomes": [
+    {
+     "measure": "the proportion of patients with HbA1c < 7.0% without experiencing hypoglycemia and without weight gain,with a superiority margin of 3%",
+     "description": "the net difference in the proportion of patients with HbA1c \\< 7.0% without experiencing hypoglycemia and without weight gain is more than 3%",
+     "timeFrame": "24 weeks"
+    }
+   ],
+   "secondaryOutcomes": [
+    {
+     "measure": "the proportion of patients with hypoglycemia",
+     "description": "the proportion of patients with hypoglycemia",
+     "timeFrame": "24 weeks"
+    },
+    {
+     "measure": "changes in HbA1c",
+     "description": "changes in HbA1c",
+     "timeFrame": "24 weeks"
+    },
+    {
+     "measure": "changes from baseline in FPG(mmol/L)",
+     "description": "changes from baseline in FPG(mmol/L)",
+     "timeFrame": "24 weeks"
+    },
+    {
+     "measure": "changes in body weight ( kilograms)",
+     "description": "changes in body weight( kilograms)",
+     "timeFrame": "24 weeks"
+    },
+    {
+     "measure": "changes in prandial insulin dosage \uff08per kilogram\uff09",
+     "description": "changes in prandial insulin dosage \uff08per kilogram\uff09",
+     "timeFrame": "24 weeks"
+    },
+    {
+     "measure": "changes in visceral as assessed by dual x-ray absorptiometry (DXA)",
+     "description": "changes in visceral as assessed by dual x-ray absorptiometry (DXA)",
+     "timeFrame": "24 weeks"
+    },
+    {
+     "measure": "number of participants with abnormal laboratory values and/or adverse events that are related to treatment",
+     "description": "number of participants with abnormal laboratory values and/or adverse events",
+     "timeFrame": "24 weeks"
+    },
+    {
+     "measure": "changes in serum c-peptide level",
+     "description": "changes in serum c-peptide level",
+     "timeFrame": "24 weeks"
+    },
+    {
+     "measure": "changes in systolic pressure",
+     "description": "changes in systolic pressure",
+     "timeFrame": "24 weeks"
+    },
+    {
+     "measure": "changes in diastolic pressure",
+     "description": "changes in diastolic pressure",
+     "timeFrame": "24 weeks"
+    },
+    {
+     "measure": "changes in serum lipid profile",
+     "description": "changes in serum lipid profile",
+     "timeFrame": "24 weeks"
+    }
+   ]
+  },
+  "eligibilityModule": {
+   "eligibilityCriteria": "Inclusion Criteria:\n\n* Age: 18 - 75 years old.\n* BMI must be greater than 24 and less than 45 kg/m2\n* Patients with type 2 diabetes who met the World Health Organization (who) diagnostic criteria (1999).\n* Newly diagnosed type 2 diabetic patients with HbA1c \u2265 9.0%\uff1bor patients with uncontrolled type 2 diabetes (HbA1c \u2265 7.5% ) who have received at least two types of oral hypoglycemic drugs (the dose of each drug needs to reach the second largest dose or more), or only insulin (excluding basal-bolus insulin therapy), or insulin with oral hypoglycemic drugs.\n* Signed informed consent.\n\nExclusion Criteria:\n\n* History of pancreatic disease,\n* History of medullary thyroid carcinoma\n* Lipase level \\> 3 times above normal,\n* Creatinine clearance \u2264 30 mL/min/1.73m2,\n* Evidence in the last 6 months of significant heart disease or stroke, including myocardial infarction, unstable angina, coronary bypass and/or percutaneous transluminal coronary angioplasty, congestive heart failure (New York Heart Association Functional Classification III-IV), or severe ischemic heart disease.\n* Preparation for pregnancy or having been in pregnancy\n* Researchers believe that there are any factors that affect assessing subjects' participation in trial.\n* Patients unable to cooperate in clinical trials",
+   "healthyVolunteers": false,
+   "sex": "ALL",
+   "minimumAge": "18 Years",
+   "maximumAge": "75 Years",
+   "stdAges": [
+    "ADULT",
+    "OLDER_ADULT"
+   ]
+  },
+  "contactsLocationsModule": {
+   "centralContacts": [
+    {
+     "name": "Changqin Liu, MD",
+     "role": "CONTACT",
+     "phone": "+86-133-7698-6106",
+     "email": "liuchangqin@xmu.edu.cn"
+    },
+    {
+     "name": "Xin Zheng, MD",
+     "role": "CONTACT",
+     "phone": "+86-187-0592-9102",
+     "email": "88126386@qq.com"
+    }
+   ],
+   "overallOfficials": [
+    {
+     "name": "Xuejun Li, MD",
+     "affiliation": "The first afilliated hospital of Xiamen university",
+     "role": "PRINCIPAL_INVESTIGATOR"
+    }
+   ],
+   "locations": [
+    {
+     "facility": "The first afilliated hospital of Xiamen university",
+     "status": "RECRUITING",
+     "city": "Xiamen",
+     "state": "Fujian",
+     "zip": "361003",
+     "country": "China",
+     "contacts": [
+      {
+       "name": "Changqin Liu, MD",
+       "role": "CONTACT",
+       "phone": "+86-133 7698 6106",
+       "email": "liuchangqin@xmu.edu.cn"
+      }
+     ],
+     "geoPoint": {
+      "lat": 24.47979,
+      "lon": 118.08187
+     }
+    }
+   ]
+  },
+  "ipdSharingStatementModule": {
+   "ipdSharing": "UNDECIDED"
+  }
+ },
+ "derivedSection": {
+  "miscInfoModule": {
+   "versionHolder": "2026-10-01"
+  },
+  "conditionBrowseModule": {
+   "meshes": [
+    {
+     "id": "D050177",
+     "term": "Overweight"
+    },
+    {
+     "id": "D009765",
+     "term": "Obesity"
+    },
+    {
+     "id": "D006943",
+     "term": "Hyperglycemia"
+    }
+   ],
+   "ancestors": [
+    {
+     "id": "D044343",
+     "term": "Overnutrition"
+    },
+    {
+     "id": "D009748",
+     "term": "Nutrition Disorders"
+    },
+    {
+     "id": "D009750",
+     "term": "Nutritional and Metabolic Diseases"
+    },
+    {
+     "id": "D001835",
+     "term": "Body Weight"
+    },
+    {
+     "id": "D012816",
+     "term": "Signs and Symptoms"
+    },
+    {
+     "id": "D013568",
+     "term": "Pathological Conditions, Signs and Symptoms"
+    },
+    {
+     "id": "D044882",
+     "term": "Glucose Metabolism Disorders"
+    },
+    {
+     "id": "D008659",
+     "term": "Metabolic Diseases"
+    }
+   ]
+  },
+  "interventionBrowseModule": {
+   "meshes": [
+    {
+     "id": "D000069450",
+     "term": "Liraglutide"
+    },
+    {
+     "id": "D000069036",
+     "term": "Insulin Glargine"
+    }
+   ],
+   "ancestors": [
+    {
+     "id": "D052216",
+     "term": "Glucagon-Like Peptide 1"
+    },
+    {
+     "id": "D004763",
+     "term": "Glucagon-Like Peptides"
+    },
+    {
+     "id": "D052336",
+     "term": "Proglucagon"
+    },
+    {
+     "id": "D005768",
+     "term": "Gastrointestinal Hormones"
+    },
+    {
+     "id": "D006728",
+     "term": "Hormones"
+    },
+    {
+     "id": "D006730",
+     "term": "Hormones, Hormone Substitutes, and Hormone Antagonists"
+    },
+    {
+     "id": "D049528",
+     "term": "Insulin, Long-Acting"
+    },
+    {
+     "id": "D061385",
+     "term": "Insulins"
+    },
+    {
+     "id": "D010187",
+     "term": "Pancreatic Hormones"
+    },
+    {
+     "id": "D036361",
+     "term": "Peptide Hormones"
+    },
+    {
+     "id": "D010455",
+     "term": "Peptides"
+    },
+    {
+     "id": "D000602",
+     "term": "Amino Acids, Peptides, and Proteins"
+    }
+   ]
+  }
+ },
+ "hasResults": false
+}

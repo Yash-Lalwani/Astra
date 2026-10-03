@@ -1,0 +1,26 @@
+# Secrets
+.env
+
+# Reference code (not part of Astra)
+MOSAIC_GCP/
+
+# Local data files (never committed)
+data/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/
+
+# Project specs (kept local)
+BACKEND.md
+CLAUDE.md
+FRONTEND.md

@@ -1,0 +1,413 @@
+{
+ "protocolSection": {
+  "identificationModule": {
+   "nctId": "NCT05622981",
+   "orgStudyIdInfo": {
+    "id": "2022-057"
+   },
+   "organization": {
+    "fullName": "Corewell Health East",
+    "class": "OTHER"
+   },
+   "briefTitle": "Pediatric Obesity Management Study",
+   "officialTitle": "Pediatric Obesity Management Pilot Study"
+  },
+  "statusModule": {
+   "statusVerifiedDate": "2024-04",
+   "overallStatus": "TERMINATED",
+   "whyStopped": "limitations in staff and resources",
+   "expandedAccessInfo": {
+    "hasExpandedAccess": false
+   },
+   "startDateStruct": {
+    "date": "2023-03-20",
+    "type": "ACTUAL"
+   },
+   "primaryCompletionDateStruct": {
+    "date": "2024-03-20",
+    "type": "ACTUAL"
+   },
+   "completionDateStruct": {
+    "date": "2024-03-20",
+    "type": "ACTUAL"
+   },
+   "studyFirstSubmitDate": "2022-11-10",
+   "studyFirstSubmitQcDate": "2022-11-10",
+   "studyFirstPostDateStruct": {
+    "date": "2022-11-21",
+    "type": "ACTUAL"
+   },
+   "lastUpdateSubmitDate": "2024-04-22",
+   "lastUpdatePostDateStruct": {
+    "date": "2024-04-24",
+    "type": "ACTUAL"
+   }
+  },
+  "sponsorCollaboratorsModule": {
+   "responsibleParty": {
+    "type": "PRINCIPAL_INVESTIGATOR",
+    "investigatorFullName": "Kerry Mychaliska",
+    "investigatorTitle": "Staff Physician, Pediatric medical group, Beaumont Health",
+    "investigatorAffiliation": "Corewell Health East"
+   },
+   "leadSponsor": {
+    "name": "Corewell Health East",
+    "class": "OTHER"
+   }
+  },
+  "oversightModule": {
+   "oversightHasDmc": false,
+   "isFdaRegulatedDrug": false,
+   "isFdaRegulatedDevice": false
+  },
+  "descriptionModule": {
+   "briefSummary": "Childhood obesity is a critical public health issue. Obesity in childhood is associated with many complications, including high blood pressure, type II diabetes mellitus, abnormal blood lipid values, obstructive sleep apnea, development of fatty liver, anxiety and depression. Addressing pediatric obesity is important not only to avoid these comorbidities in childhood, but also to mitigate long-term negative health outcomes, as overweight and obese youth are likely to remain overweight or obese into adulthood. There are published guidelines, however, there is not a successful standardized approach to the management of this problem. The most studied approach to pediatric obesity is multidisciplinary, high-resource weight management programs that are unable to be conducted in the primary care setting, and the prevalence of pediatric obesity continues to increase. The purpose of this study is to create, implement and evaluate a standardized protocol for the management of pediatric obesity in a low-resource primary care setting, using age-specific educational materials and every 2-week follow-up visits focused on achieving progress toward healthy lifestyle goals. The primary outcome will be the change in subject body mass index (BMI) percentile over 24 weeks of visits to the primary care doctor at a pediatric clinic.",
+   "detailedDescription": "All patients who present to the Beaumont Pediatric Outpatient Clinic for a Health Maintenance or Acute Care visit that meet inclusion criteria will be eligible for enrollment in the study. Eligible patients and their caregivers/guardians will be approached during health maintenance or acute care visits in the Beaumont Pediatric Outpatient Clinic by their treating physician. The caregivers/guardians will be giving permission for their child's participation in the study. However, we will also obtain oral assent from patients age 8-13 and written assent from patients age 14-17.\n\nUpon enrollment, blood tests will be ordered including a lipid panel, which measures different fats in the blood, including total cholesterol, high-density lipoprotein (HDL, the \"good\" cholesterol), low-density lipoprotein (LDL, the \"bad\" cholesterol), and smaller fats called triglycerides; alanine transaminase (ALT, a measure of liver function); and glycated hemoglobin-adult-1c (Hb A1c, a measure of sugar levels in the blood over the last three months. Each enrolled patient will receive an age-specific binder containing educational handouts. There are 11 educational handouts that have been created, edited and reviewed by the study team, and deemed readable at the first-grade level). Binders will be specific to four different age groups: age 2-4, age 5-8, age 9-11, and age 12+ to ensure the information within the binder is appropriate for the age of the child.\n\nAt each visit, starting at the enrollment visit, the patients and their family members will identify a specific goal toward implementing healthy lifestyle changes and will be encouraged to keep track of whether this goal has been achieved using the goal sheets within the binder. Follow-up visits will occur every 2 weeks for 6 months for a total of 12 visits, and a new handout will be given for the binder each time. Blood test values will be repeated as recommended by the 2023 American Academy of Pediatrics Guideline for the Evaluation and Treatment of Children and Adolescents with Obesity to evaluate for comorbidities. There will be follow-up surveys given to parents and children over the age of 12 to identify areas of improvement and barriers to healthy choices. For children 2-11 the parents will be provided the survey.\n\nThis study is classified as a single-arm interventional study because all patients are assigned to behavioral intervention per the study protocol, and there is no comparator group. Participant data will be reported based on age ranges specified in the protocol."
+  },
+  "conditionsModule": {
+   "conditions": [
+    "Obesity, Childhood",
+    "Behavior, Eating"
+   ],
+   "keywords": [
+    "overweight",
+    "children",
+    "hypertension",
+    "elevated body mass index",
+    "type II diabetes",
+    "dyslipidemia",
+    "obstructive sleep apnea",
+    "primary care interventions"
+   ]
+  },
+  "designModule": {
+   "studyType": "INTERVENTIONAL",
+   "phases": [
+    "NA"
+   ],
+   "designInfo": {
+    "allocation": "NA",
+    "interventionModel": "SINGLE_GROUP",
+    "interventionModelDescription": "Single arm, non-blinded, non-randomized, behavioral intervention with no comparator arms.",
+    "primaryPurpose": "TREATMENT",
+    "maskingInfo": {
+     "masking": "NONE",
+     "maskingDescription": "No masking"
+    }
+   },
+   "enrollmentInfo": {
+    "count": 49,
+    "type": "ACTUAL"
+   }
+  },
+  "armsInterventionsModule": {
+   "armGroups": [
+    {
+     "label": "Behavioral intervention",
+     "type": "EXPERIMENTAL",
+     "description": "Behavioral intervention for healthy lifestyle goals, four analysis groups divided by age (2-4, 5-8, 9-11, 12-17)",
+     "interventionNames": [
+      "Behavioral: Age-specific educational materials and monitoring"
+     ]
+    }
+   ],
+   "interventions": [
+    {
+     "type": "BEHAVIORAL",
+     "name": "Age-specific educational materials and monitoring",
+     "description": "Subjects will receive age-specific behavioral modification and educational materials plus every 2-week monitoring for goals and progress at reducing BMI for 24 weeks in the pediatric primary care clinic.",
+     "armGroupLabels": [
+      "Behavioral intervention"
+     ]
+    }
+   ]
+  },
+  "outcomesModule": {
+   "primaryOutcomes": [
+    {
+     "measure": "Change from baseline body mass index (BMI) percentile at 24 weeks",
+     "description": "BMI will be calculated from height and weight using the formula BMI=(weight in kilograms)/(height in meters)squared, and BMI-for-age percentile determined based on the Centers for Disease Control (CDC) standardized growth charts. BMI percentile at study enrollment (baseline) will be subtracted from BMI percentile measured at the 24-week visit to calculate change in BMI percentile. Negative numbers will indicate a decrease in BMI percentile over time, while positive numbers will indicate an increase in BMI percentile over the study period.",
+     "timeFrame": "Baseline to 24 weeks"
+    }
+   ],
+   "secondaryOutcomes": [
+    {
+     "measure": "Change in systolic blood pressure percentile at 24 weeks",
+     "description": "Systolic blood pressure will be measured at study enrollment (baseline) and at the 24-week visit, and the blood pressure-for-age percentile determined using 2017 American Academy of Pediatrics (AAP) Clinical Practice Guideline for Screening and Management of High Blood Pressure in Children and Adolescents. The change in blood pressure percentile will be calculated by subtracting the systolic blood pressure percentile at baseline from the systolic blood pressure percentile at 24 weeks. Negative numbers will indicate a decrease in systolic blood pressure percentile, while positive numbers will indicate an increase in systolic blood pressure percentile over the study period.",
+     "timeFrame": "baseline to 24 weeks"
+    },
+    {
+     "measure": "Change in diastolic blood pressure percentile at 24 weeks",
+     "description": "Diastolic blood pressure will be measured at study enrollment (baseline) and at the 24-week visit, and the blood pressure-for-age percentile determined using 2017 American Academy of Pediatrics (AAP) Clinical Practice Guideline for Screening and Management of High Blood Pressure in Children and Adolescents. The change in blood pressure percentile will be calculated by subtracting the diastolic blood pressure percentile at baseline from the diastolic blood pressure percentile at 24 weeks. Negative numbers will indicate a decrease in diastolic blood pressure percentile, while positive numbers will indicate an increase in diastolic blood pressure percentile over the study period.",
+     "timeFrame": "baseline to 24 weeks"
+    },
+    {
+     "measure": "Change in serum total cholesterol at 24 weeks",
+     "description": "Total cholesterol will be measured at study enrollment (baseline) and at the 24-week visit, and the difference calculated by subtracting the total cholesterol at baseline from the total cholesterol at 24 weeks. Negative numbers will indicate a decrease in total cholesterol, while positive numbers will indicate an increase in total cholesterol over the study period.",
+     "timeFrame": "baseline to 24 weeks"
+    },
+    {
+     "measure": "Change in serum high-density lipoprotein (HDL) at 24 weeks",
+     "description": "HDL will be measured at study enrollment (baseline) and at the 24-week visit, and the difference calculated by subtracting the HDL at baseline from the HDL at 24 weeks. Negative numbers will indicate a decrease in HDL, while positive numbers will indicate an increase in HDL over the study period.",
+     "timeFrame": "baseline to 24 weeks"
+    },
+    {
+     "measure": "Change in serum low-density lipoprotein (LDL) at 24 weeks",
+     "description": "LDL will be measured at study enrollment (baseline) and at the 24-week visit, and the difference calculated by subtracting the LDL at baseline from the LDL at 24 weeks. Negative numbers will indicate a decrease in LDL, while positive numbers will indicate an increase in LDL over the study period.",
+     "timeFrame": "baseline to 24 weeks"
+    },
+    {
+     "measure": "Change in serum non-high density lipoprotein-cholesterol (non-HDL-c) at 24 weeks",
+     "description": "Non-HDL-c will be measured at study enrollment (baseline) and at the 24-week visit, and the difference calculated by subtracting the non-HDL-c at baseline from the non-HDL-c at 24 weeks. Negative numbers will indicate a decrease in non-HDL-c, while positive numbers will indicate an increase in non-HDL-c over the study period.",
+     "timeFrame": "baseline to 24 weeks"
+    },
+    {
+     "measure": "Change in serum triglycerides at 24 weeks",
+     "description": "Triglycerides will be measured at study enrollment (baseline) and at the 24-week visit, and the difference calculated by subtracting the triglycerides at baseline from the triglycerides at 24 weeks. Negative numbers will indicate a decrease in triglycerides, while positive numbers will indicate an increase in triglycerides over the study period.",
+     "timeFrame": "baseline to 24 weeks"
+    },
+    {
+     "measure": "Change in serum glycated hemoglobin-adult1c (HbA1c) at 24 weeks",
+     "description": "HbA1c will be measured at study enrollment (baseline) and at the 24-week visit, and the difference calculated by subtracting the HbA1c at baseline from the HbA1c at 24 weeks. Negative numbers will indicate a decrease in HbA1c, while positive numbers will indicate an increase in HbA1c over the study period.",
+     "timeFrame": "baseline to 24 weeks"
+    },
+    {
+     "measure": "Change in serum alanine transaminase (ALT) at 24 weeks",
+     "description": "ALT will be measured at study enrollment (baseline) and at the 24-week visit, and the difference calculated by subtracting the ALT at baseline from the ALT at 24 weeks. Negative numbers will indicate a decrease in ALT, while positive numbers will indicate an increase in ALT over the study period.",
+     "timeFrame": "baseline to 24 weeks"
+    },
+    {
+     "measure": "Child feedback regarding health improvement",
+     "description": "Proportion of children responding \"yes\" to the feedback survey question, \"I feel better since starting to focus on a healthy lifestyle.\" This outcome will be collected only for children age 12 and older.",
+     "timeFrame": "24 weeks"
+    },
+    {
+     "measure": "Child feedback regarding exercise",
+     "description": "Proportion of children responding \"yes\" to the feedback survey question, \"I have been able to do 60 minutes of exercise daily.\" This outcome will be collected only for children age 12 and older.",
+     "timeFrame": "24 weeks"
+    },
+    {
+     "measure": "Child feedback regarding sleep",
+     "description": "Proportion of children responding \"yes\" to the feedback survey question, \"I am getting at least 8 hours of sleep every night.\" This outcome will be collected only for children age 12 and older.",
+     "timeFrame": "24 weeks"
+    },
+    {
+     "measure": "Child feedback regarding binder material",
+     "description": "Proportion of children responding \"yes\" to the feedback survey question, \"I have learned something new from the binder materials.\" This outcome will be collected only for children age 12 and older.",
+     "timeFrame": "24 weeks"
+    },
+    {
+     "measure": "Parent feedback regarding healthy eating",
+     "description": "Parent feedback to the question, \"I am learning about healthy eating,\" on a follow-up survey will be scored on a Likert scale from 1-5, where 1 is \"Strongly disagree\" and indicates dissatisfaction with this aspect of the program, and 5 is \"Strongly agree\" and indicates satisfaction with this aspect of the program. The median response will be reported.",
+     "timeFrame": "24 weeks"
+    },
+    {
+     "measure": "Proportion of parents with positive response in feedback about healthy eating",
+     "description": "Proportion of parents responding 4 or 5 (\"Agree\" or \"Strongly agree\") to the feedback survey question \"I am learning about healthy eating,\" on a follow-up survey scored on a Likert scale from 1-5, where 1 is \"Strongly disagree\" and indicates dissatisfaction with this aspect of the program, and 5 is \"Strongly agree\" and indicates satisfaction with this aspect of the program.",
+     "timeFrame": "24 weeks"
+    },
+    {
+     "measure": "Parent feedback regarding healthy changes in the child",
+     "description": "Parent feedback to the question \"I am seeing some healthy changes in my child,\" on a follow-up survey will be scored on a Likert scale from 1-5, where 1 is \"Strongly disagree\" and indicates dissatisfaction with this aspect of the program, and 5 is \"Strongly agree\" and indicates satisfaction with this aspect of the program. The median response will be reported.",
+     "timeFrame": "24 weeks"
+    },
+    {
+     "measure": "Proportion of parents with positive response in feedback about healthy changes in the child",
+     "description": "Proportion of parents responding 4 or 5 (\"Agree\" or \"Strongly agree\") to the feedback survey question \"I am seeing some healthy changes in my child,\" on a follow-up survey scored on a Likert scale from 1-5, where 1 is \"Strongly disagree\" and indicates dissatisfaction with this aspect of the program, and 5 is \"Strongly agree\" and indicates satisfaction with this aspect of the program.",
+     "timeFrame": "24 weeks"
+    },
+    {
+     "measure": "Parent feedback regarding utility of binder information",
+     "description": "Parent feedback to the question \"The information in the binder is helpful,\" on a follow-up survey will be scored on a Likert scale from 1-5, where 1 is \"Strongly disagree\" and indicates dissatisfaction with this aspect of the program, and 5 is \"Strongly agree\" and indicates satisfaction with this aspect of the program. The median response will be reported.",
+     "timeFrame": "24 weeks"
+    },
+    {
+     "measure": "Proportion of parents with positive response in feedback about utility of binder information",
+     "description": "Proportion of parents responding 4 or 5 (\"Agree\" or \"Strongly agree\") to the feedback survey question \"The information in the binder is helpful,\" on a follow-up survey scored on a Likert scale from 1-5, where 1 is \"Strongly disagree\" and indicates dissatisfaction with this aspect of the program, and 5 is \"Strongly agree\" and indicates satisfaction with this aspect of the program.",
+     "timeFrame": "24 weeks"
+    },
+    {
+     "measure": "Parent-identified barriers to behavioral changes",
+     "description": "A list of potential barriers to lifestyle changes will be provided to parents in the feedback survey. The proportion of parents identifying each barrier will be reported.",
+     "timeFrame": "24 weeks"
+    },
+    {
+     "measure": "Adherence to follow-up scheduling",
+     "description": "The proportion of visits attended out of all visits scheduled during the study period will be reported.",
+     "timeFrame": "24 weeks"
+    }
+   ]
+  },
+  "eligibilityModule": {
+   "eligibilityCriteria": "Inclusion Criteria:\n\n* Patients presenting to the Beaumont Pediatric Outpatient Clinic, Royal Oak, Michigan for a health maintenance or acute care visit\n* Patient age 2-17 years\n* Patients with BMI equal to or greater than the 85th percentile\n\nExclusion Criteria:\n\n* Patients less than 2 years\n* Patients greater than 17 years\n* Patients with BMI less than 85th percentile\n* Patients who are pregnant\n* Decisionally-impaired individuals",
+   "healthyVolunteers": false,
+   "sex": "ALL",
+   "minimumAge": "2 Years",
+   "maximumAge": "17 Years",
+   "stdAges": [
+    "CHILD"
+   ]
+  },
+  "contactsLocationsModule": {
+   "overallOfficials": [
+    {
+     "name": "Kerry Mychaliksa, MD",
+     "affiliation": "Corewell Health East",
+     "role": "PRINCIPAL_INVESTIGATOR"
+    }
+   ],
+   "locations": [
+    {
+     "facility": "Beaumont Health System",
+     "city": "Royal Oak",
+     "state": "Michigan",
+     "zip": "48073",
+     "country": "United States",
+     "geoPoint": {
+      "lat": 42.48948,
+      "lon": -83.14465
+     }
+    }
+   ]
+  },
+  "ipdSharingStatementModule": {
+   "ipdSharing": "NO"
+  }
+ },
+ "derivedSection": {
+  "miscInfoModule": {
+   "versionHolder": "2026-10-01"
+  },
+  "conditionBrowseModule": {
+   "meshes": [
+    {
+     "id": "D063766",
+     "term": "Pediatric Obesity"
+    },
+    {
+     "id": "D005247",
+     "term": "Feeding Behavior"
+    },
+    {
+     "id": "D050177",
+     "term": "Overweight"
+    },
+    {
+     "id": "D006973",
+     "term": "Hypertension"
+    },
+    {
+     "id": "D003924",
+     "term": "Diabetes Mellitus, Type 2"
+    },
+    {
+     "id": "D050171",
+     "term": "Dyslipidemias"
+    },
+    {
+     "id": "D020181",
+     "term": "Sleep Apnea, Obstructive"
+    }
+   ],
+   "ancestors": [
+    {
+     "id": "D009765",
+     "term": "Obesity"
+    },
+    {
+     "id": "D044343",
+     "term": "Overnutrition"
+    },
+    {
+     "id": "D009748",
+     "term": "Nutrition Disorders"
+    },
+    {
+     "id": "D009750",
+     "term": "Nutritional and Metabolic Diseases"
+    },
+    {
+     "id": "D001835",
+     "term": "Body Weight"
+    },
+    {
+     "id": "D012816",
+     "term": "Signs and Symptoms"
+    },
+    {
+     "id": "D013568",
+     "term": "Pathological Conditions, Signs and Symptoms"
+    },
+    {
+     "id": "D001522",
+     "term": "Behavior, Animal"
+    },
+    {
+     "id": "D001519",
+     "term": "Behavior"
+    },
+    {
+     "id": "D014652",
+     "term": "Vascular Diseases"
+    },
+    {
+     "id": "D002318",
+     "term": "Cardiovascular Diseases"
+    },
+    {
+     "id": "D003920",
+     "term": "Diabetes Mellitus"
+    },
+    {
+     "id": "D044882",
+     "term": "Glucose Metabolism Disorders"
+    },
+    {
+     "id": "D008659",
+     "term": "Metabolic Diseases"
+    },
+    {
+     "id": "D004700",
+     "term": "Endocrine System Diseases"
+    },
+    {
+     "id": "D052439",
+     "term": "Lipid Metabolism Disorders"
+    },
+    {
+     "id": "D012891",
+     "term": "Sleep Apnea Syndromes"
+    },
+    {
+     "id": "D001049",
+     "term": "Apnea"
+    },
+    {
+     "id": "D012120",
+     "term": "Respiration Disorders"
+    },
+    {
+     "id": "D012140",
+     "term": "Respiratory Tract Diseases"
+    },
+    {
+     "id": "D020919",
+     "term": "Sleep Disorders, Intrinsic"
+    },
+    {
+     "id": "D020920",
+     "term": "Dyssomnias"
+    },
+    {
+     "id": "D012893",
+     "term": "Sleep Wake Disorders"
+    },
+    {
+     "id": "D009422",
+     "term": "Nervous System Diseases"
+    }
+   ]
+  }
+ },
+ "hasResults": false
+}
