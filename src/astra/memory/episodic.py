@@ -60,7 +60,16 @@ async def save_episode(
     )
 
 
+async def find_episodes(
+    store: BaseStore, agent: str | None, query: str | None, limit: int
+) -> list[dict]:
+    """Episodes most similar to the query, or the most recent ones without a query;
+    all agents when agent is None. Each value gets its agent and similarity score."""
+    namespace = ("episodes", agent) if agent else ("episodes",)
+    items = await store.asearch(namespace, query=query or None, limit=limit)
+    return [{**item.value, "agent": item.namespace[1], "score": item.score} for item in items]
+
+
 async def similar_episodes(store: BaseStore, agent: str, task: str, limit: int = 3) -> list[str]:
     """Summaries of the agent's past runs most similar to this task."""
-    items = await store.asearch(("episodes", agent), query=task, limit=limit)
-    return [item.value["summary"] for item in items]
+    return [episode["summary"] for episode in await find_episodes(store, agent, task, limit)]

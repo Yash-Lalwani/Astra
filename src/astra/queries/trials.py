@@ -133,3 +133,15 @@ async def all_studies() -> list[ParsedStudy]:
 async def existing_nct_ids(nct_ids: list[str]) -> set[str]:
     rows = await fetch_all("SELECT nct_id FROM studies WHERE nct_id = ANY(%s)", (nct_ids,))
     return {row["nct_id"] for row in rows}
+
+
+async def studies_for_sponsor(sponsor: str) -> list[dict]:
+    return await fetch_all(
+        """
+        SELECT nct_id, title, sponsor, condition_group, overall_status, phases, start_date,
+               primary_completion_date, primary_completion_type, has_results, is_applicable_trial
+        FROM studies WHERE sponsor = %s
+        ORDER BY primary_completion_date DESC NULLS LAST, nct_id
+        """,
+        (sponsor,),
+    )

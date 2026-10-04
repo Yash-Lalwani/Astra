@@ -3,7 +3,7 @@ from typing import Any
 
 from psycopg.types.json import Jsonb
 
-from astra.db import execute, fetch_one
+from astra.db import execute, fetch_all, fetch_one
 
 
 async def create_run(
@@ -26,9 +26,43 @@ async def get_run(run_id: uuid.UUID | str) -> dict | None:
     return await fetch_one("SELECT * FROM runs WHERE run_id = %s", (run_id,))
 
 
-async def mark_running(run_id: uuid.UUID | str) -> None:
-    await execute(
-        "UPDATE runs SET status = 'running', started_at = now() WHERE run_id = %s", (run_id,)
+async def claim_run(run_id: uuid.UUID | str) -> bool:
+    """Mark a queued run as running. False when it was not queued (already started or done),
+    so two streams can never start the same run."""
+    row = await fetch_one(
+        """
+        UPDATE runs SET status = 'running', started_at = now()
+        WHERE run_id = %s AND status = 'queued' RETURNING run_id
+        """,
+        (run_id,),
+    )
+    return row is not None
+
+
+async def public_runs_today() -> int:
+    row = await fetch_one(
+        """
+        SELECT count(*) AS runs FROM runs
+        WHERE created_by = 'public' AND created_at >= date_trunc('day', now() AT TIME ZONE 'UTC')
+                                                    AT TIME ZONE 'UTC'
+        """
+    )
+    return row["runs"]
+
+
+async def list_runs(
+    showcase: bool | None, status: str | None, limit: int, offset: int
+) -> list[dict]:
+    """Newest first; every row carries the total match count as `total`."""
+    return await fetch_all(
+        """
+        SELECT *, count(*) OVER () AS total FROM runs
+        WHERE (%(showcase)s::boolean IS NULL OR is_showcase = %(showcase)s)
+          AND (%(status)s::text IS NULL OR status = %(status)s)
+        ORDER BY created_at DESC
+        LIMIT %(limit)s OFFSET %(offset)s
+        """,
+        {"showcase": showcase, "status": status, "limit": limit, "offset": offset},
     )
 
 

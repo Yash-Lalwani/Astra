@@ -51,10 +51,10 @@ def _summary(events: list[dict]) -> dict:
 
 
 async def stream_run(graph: CompiledStateGraph, run_id: uuid.UUID | str) -> AsyncIterator[dict]:
-    """Run a queued run live, yielding each event; the events are saved for replay."""
+    """Run a run live, yielding each event; the events are saved for replay.
+    The caller first claims the run (run_queries.claim_run), so it is never started twice."""
     run_id = str(run_id)
     run = await run_queries.get_run(run_id)
-    await run_queries.mark_running(run_id)
     logger.info("Run %s started: %s", run_id, run["task"])
     started = time.perf_counter()
     events: list[dict] = []

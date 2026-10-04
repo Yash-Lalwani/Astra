@@ -41,3 +41,8 @@ async def insert_learned_rule(
         """,
         (agent, rule_text, signal_id, reviewer_reason),
     )
+
+
+async def rule_counts() -> dict[str, int]:
+    rows = await fetch_all("SELECT agent, count(*) AS rules FROM agent_rules GROUP BY agent")
+    return {row["agent"]: row["rules"] for row in rows}

@@ -84,20 +84,26 @@ SPONSOR_ORDER = {
 
 
 async def list_profiles(
-    condition_group: str | None, min_studies: int, order_by: str, limit: int
+    condition_group: str | None, min_studies: int, order_by: str, limit: int, offset: int = 0
 ) -> list[dict]:
+    """Every row carries the total match count as `total`."""
     return await fetch_all(
         f"""
-        SELECT * FROM sponsor_profiles AS profile
+        SELECT *, count(*) OVER () AS total FROM sponsor_profiles AS profile
         WHERE total_studies >= %(min_studies)s
           AND (%(condition_group)s::text IS NULL OR EXISTS (
                 SELECT 1 FROM studies
                 WHERE studies.sponsor = profile.sponsor
                   AND studies.condition_group = %(condition_group)s))
         ORDER BY {SPONSOR_ORDER[order_by]}
-        LIMIT %(limit)s
+        LIMIT %(limit)s OFFSET %(offset)s
         """,
-        {"condition_group": condition_group, "min_studies": min_studies, "limit": limit},
+        {
+            "condition_group": condition_group,
+            "min_studies": min_studies,
+            "limit": limit,
+            "offset": offset,
+        },
     )
 
 

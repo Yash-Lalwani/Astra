@@ -1,8 +1,18 @@
-import pytest
+import asyncio
+import uuid
 
+import pytest
+from conftest import ADMIN_KEY
+from langchain_core.runnables import RunnableLambda
+
+from astra import llm
+from astra.agents.react_agent import run_specialist
+from astra.agents.registry import AGENTS
+from astra.config import settings
 from astra.db import fetch_all, fetch_one
 from astra.guardrails.injection import REMOVED, injection_match, sanitize_external_text
 from astra.guardrails.input_checks import check_task
+from astra.queries.runs import create_run
 
 
 @pytest.mark.parametrize(
@@ -80,3 +90,53 @@ async def test_injection_outside_a_run_is_replaced_but_not_logged(db):
 )
 def test_input_checks(task, blocked):
     assert (check_task(task) is not None) == blocked
+
+
+async def test_public_cap_returns_429_and_is_logged(api, monkeypatch):
+    monkeypatch.setattr(settings, "public_daily_run_limit", 1)
+    task = {"task": "Find overdue oncology trials"}
+    assert (await api.post("/runs", json=task)).status_code == 201
+
+    capped = await api.post("/runs", json=task)
+    assert capped.status_code == 429
+    assert capped.json() == {"message": capped.json()["message"], "limit": 1}
+    events = await fetch_all("SELECT stage, action FROM guardrail_events")
+    assert [(e["stage"], e["action"]) for e in events] == [("usage_limit", "blocked")]
+
+    admin_run = await api.post("/runs", json=task, headers={"X-Admin-Key": ADMIN_KEY})
+    assert admin_run.status_code == 201  # the admin key is never capped
+
+
+async def test_admin_key_is_required_to_review(api):
+    signal_id = uuid.uuid4()
+    for headers in ({}, {"X-Admin-Key": "wrong"}):
+        response = await api.post(f"/review/{signal_id}", json={"decision": "approve"},
+                                  headers=headers)  # fmt: skip
+        assert response.status_code == 401
+
+
+async def test_wrong_admin_key_on_run_creation_is_401(api):
+    response = await api.post(
+        "/runs", json={"task": "Find overdue oncology trials"}, headers={"X-Admin-Key": "wrong"}
+    )
+    assert response.status_code == 401
+
+
+async def test_agent_timeout_is_stopped_and_logged(seeded, monkeypatch):
+    async def slow(messages):
+        await asyncio.sleep(5)
+
+    monkeypatch.setattr(llm, "tool_model", lambda role, tools: RunnableLambda(slow))
+    monkeypatch.setattr(settings, "agent_timeout_seconds", 0.05)
+    run_id = str(await create_run("Look for silent delays"))
+
+    result = await run_specialist(
+        AGENTS["timeline"], "Look for silent delays", run_id=run_id, focus_nct_ids=[],
+        condition_group=None,
+    )  # fmt: skip
+
+    assert result.error == "stopped after 0.05s"
+    events = await fetch_all("SELECT stage, action, agent FROM guardrail_events")
+    assert [(e["stage"], e["action"], e["agent"]) for e in events] == [
+        ("usage_limit", "stopped", "timeline")
+    ]

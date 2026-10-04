@@ -75,8 +75,16 @@ class Settings(BaseSettings):
     layer_collection: str = "astra-trials"
 
     @property
+    def cors_origin_list(self) -> list[str]:
+        return [origin.strip() for origin in self.cors_origins.split(",") if origin.strip()]
+
+    @property
     def openrouter_provider_list(self) -> list[str]:
         return [name.strip() for name in self.openrouter_providers.split(",") if name.strip()]
+
+    @property
+    def layer_enabled(self) -> bool:
+        return bool(self.layer_mcp_url)
 
 
 def export_langsmith_env(config: Settings) -> None:

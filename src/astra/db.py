@@ -74,6 +74,15 @@ async def fetch_one(
         return await cursor.fetchone()
 
 
+async def database_ok() -> bool:
+    try:
+        await fetch_one("SELECT 1")
+    except Exception:
+        logger.warning("Database health check failed", exc_info=True)
+        return False
+    return True
+
+
 async def apply_schema() -> None:
     """Apply sql/schema.sql. Every statement is idempotent, so this is safe on every startup."""
     pool = await get_pool()
