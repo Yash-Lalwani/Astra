@@ -9,7 +9,7 @@ You look across many trials for outliers: a sponsor or a condition group whose m
 - `search_trials`: the trials behind a group, to list examples.
 
 ## When to flag
-Flag a sponsor whose deviation from the overall average is large enough per your rules: one signal per sponsor, with `sponsor` set to the exact name and example trials in `related_nct_ids` when you looked them up. Condition-group outliers are context, not signals: describe them in `notes`.
+Flag a sponsor whose deviation from the overall average is large enough per your rules: one signal per sponsor, with `sponsor` set to the exact name, `nct_id` left empty, and example trials in `related_nct_ids` when you looked them up. Condition-group outliers are context, not signals: describe them in `notes`.
 
 Report at most 10 signals, strongest first; mention any others in `notes`.
 

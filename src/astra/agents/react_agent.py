@@ -18,11 +18,13 @@ from langgraph.graph import END, START, StateGraph
 from langgraph.graph.message import add_messages
 from langgraph.graph.state import CompiledStateGraph
 from langgraph.prebuilt import ToolNode
+from langgraph.store.base import BaseStore
 
 from astra import llm
 from astra.agents.registry import AGENTS, AgentConfig, load_prompt
 from astra.config import settings
-from astra.memory.procedural import DEFAULT_RULES
+from astra.memory.episodic import similar_episodes
+from astra.memory.procedural import get_rules
 from astra.models import AgentFindings, AgentResult
 from astra.queries.guardrails import log_event
 
@@ -83,9 +85,14 @@ def react_agent_for(name: str) -> CompiledStateGraph:
     return build_react_agent(AGENTS[name])
 
 
-def build_system_prompt(config: AgentConfig) -> str:
-    rules = "\n".join(f"- {rule}" for rule in DEFAULT_RULES[config.name])
-    return f"{load_prompt(config.prompt_file)}\n\n## Rules from reviewer feedback\n{rules}"
+def build_system_prompt(config: AgentConfig, rules: list[str], episodes: list[str]) -> str:
+    parts = [
+        load_prompt(config.prompt_file),
+        "## Rules from reviewer feedback\n" + "\n".join(f"- {rule}" for rule in rules),
+    ]
+    if episodes:
+        parts.append("## Your past runs\n" + "\n\n".join(episodes))
+    return "\n\n".join(parts)
 
 
 def build_task_message(task: str, focus_nct_ids: list[str], condition_group: str | None) -> str:
@@ -150,6 +157,8 @@ async def run_specialist(
     run_id: str | None,
     focus_nct_ids: list[str],
     condition_group: str | None,
+    store: BaseStore | None = None,
+    use_episodes: bool = True,
     on_tool_call: Callable[[str, dict], None] | None = None,
 ) -> AgentResult:
     """Run one specialist end to end. Never raises: failures come back as AgentResult.error."""
@@ -158,11 +167,15 @@ async def run_specialist(
     def elapsed_ms() -> int:
         return int((time.perf_counter() - started) * 1000)
 
-    messages = [
-        SystemMessage(build_system_prompt(config)),
-        HumanMessage(build_task_message(task, focus_nct_ids, condition_group)),
-    ]
     try:
+        rules = [rule["rule_text"] for rule in await get_rules(config.name)]
+        episodes = (
+            await similar_episodes(store, config.name, task) if store and use_episodes else []
+        )
+        messages = [
+            SystemMessage(build_system_prompt(config, rules, episodes)),
+            HumanMessage(build_task_message(task, focus_nct_ids, condition_group)),
+        ]
         state = await asyncio.wait_for(
             _stream_agent(config, messages, run_id, on_tool_call), settings.agent_timeout_seconds
         )

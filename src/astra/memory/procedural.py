@@ -1,5 +1,24 @@
 """Procedural memory: how each agent should reason. The default rules are rewritten from the
-reference project to use only data Astra actually has."""
+reference project to use only data Astra actually has; learned rules come from rejections."""
+
+from langmem import create_memory_manager
+from pydantic import BaseModel
+
+from astra import llm
+from astra.models import RuleChange, SavedSignal
+from astra.queries import rules as rule_queries
+
+RULE_INSTRUCTIONS = (
+    "A human reviewer rejected a finding made by a clinical-trial auditing agent. Write ONE "
+    "short, general, reusable rule (one sentence) that would have prevented this mistake. Do not "
+    "name specific NCT IDs or sponsors. If an existing rule already covers the reviewer's point, "
+    "return no new rule."
+)
+
+
+class AgentRule(BaseModel):
+    content: str
+
 
 DEFAULT_RULES: dict[str, list[str]] = {
     "missing_results": [
@@ -66,3 +85,56 @@ DEFAULT_RULES: dict[str, list[str]] = {
         "here.",
     ],
 }
+
+
+async def seed_default_rules() -> None:
+    await rule_queries.seed_rules(
+        [(agent, rule) for agent, rules in DEFAULT_RULES.items() for rule in rules]
+    )
+
+
+async def get_rules(agent: str) -> list[dict]:
+    """All of the agent's rules, default and learned, oldest first."""
+    return await rule_queries.rules_for(agent)
+
+
+def rejection_message(signal: SavedSignal, reviewer_reason: str) -> str:
+    evidence = "\n".join(f"- {item.reference}: {item.detail}" for item in signal.evidence)
+    return (
+        f"Agent: {signal.agent} (signal type {signal.signal_type})\n"
+        f"Rejected finding: {signal.title} (confidence {signal.confidence:.2f})\n"
+        f"Summary: {signal.summary}\n"
+        f"Evidence:\n{evidence}\n"
+        f"Reviewer's reason for rejecting it: {reviewer_reason}"
+    )
+
+
+async def learn_from_rejection(signal: SavedSignal, reviewer_reason: str) -> RuleChange:
+    """Turn a reviewer's rejection into one general rule for the agent, linked to the signal."""
+    existing = [(str(rule["rule_id"]), AgentRule(content=rule["rule_text"]))
+                for rule in await get_rules(signal.agent)]  # fmt: skip
+    manager = create_memory_manager(
+        llm.plain_model("fast"),
+        schemas=[AgentRule],
+        instructions=RULE_INSTRUCTIONS,
+        enable_inserts=True,
+        enable_updates=False,
+        enable_deletes=False,
+    )
+    memories = await manager.ainvoke(
+        {
+            "messages": [{"role": "user", "content": rejection_message(signal, reviewer_reason)}],
+            "existing": existing,
+        }
+    )
+    existing_ids = {memory_id for memory_id, _ in existing}
+    new_rules = [memory.content.content for memory in memories if memory.id not in existing_ids]
+    if not new_rules:
+        return RuleChange(action="none")
+    # The instructions ask for one rule; if the model writes more, only the first is kept.
+    row = await rule_queries.insert_learned_rule(
+        signal.agent, new_rules[0], signal.signal_id, reviewer_reason
+    )
+    if row is None:
+        return RuleChange(action="none")
+    return RuleChange(action="added", rule_id=row["rule_id"], rule_text=row["rule_text"])

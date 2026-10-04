@@ -88,7 +88,10 @@ class ParsedPaper(BaseModel):
 # Field descriptions are part of the JSON schema the model sees in structured calls.
 class EvidenceItem(BaseModel):
     source: Literal["registry", "paper", "aggregate"]
-    reference: str = Field(description='NCT ID, PMID, or "sponsor:<name>" / "group:<value>"')
+    reference: str = Field(
+        description='Exactly one source ID: an NCT ID, "PMID <number>", "sponsor:<name>" or '
+        '"group:<value>". No paths or field names.'
+    )
     detail: str = Field(description="The specific fact, taken from a tool result")
 
 
@@ -137,3 +140,9 @@ class RoutingDecision(BaseModel):
     agents: list[AgentName] = []
     condition_group: ConditionGroup | None = None
     reason: str = Field(description="One or two sentences, shown in the UI")
+
+
+class RuleChange(BaseModel):
+    action: Literal["added", "none"]
+    rule_id: uuid.UUID | None = None
+    rule_text: str | None = None

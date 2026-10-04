@@ -99,3 +99,12 @@ async def list_profiles(
         """,
         {"condition_group": condition_group, "min_studies": min_studies, "limit": limit},
     )
+
+
+async def canonical_names(names: list[str]) -> dict[str, str]:
+    """Lower-cased name -> the sponsor name as stored, for the names that exist."""
+    rows = await fetch_all(
+        "SELECT sponsor FROM sponsor_profiles WHERE lower(sponsor) = ANY(%s)",
+        ([name.lower() for name in names],),
+    )
+    return {row["sponsor"].lower(): row["sponsor"] for row in rows}

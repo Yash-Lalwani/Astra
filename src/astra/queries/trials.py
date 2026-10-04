@@ -128,3 +128,8 @@ async def studies_with_status(
 
 async def all_studies() -> list[ParsedStudy]:
     return [ParsedStudy.model_validate(row) for row in await fetch_all("SELECT * FROM studies")]
+
+
+async def existing_nct_ids(nct_ids: list[str]) -> set[str]:
+    rows = await fetch_all("SELECT nct_id FROM studies WHERE nct_id = ANY(%s)", (nct_ids,))
+    return {row["nct_id"] for row in rows}
