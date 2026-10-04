@@ -61,10 +61,6 @@ OPTIONAL_FILTERS = """
 """
 
 
-def _to_study(row: dict) -> ParsedStudy:
-    return ParsedStudy.model_validate({field: row[field] for field in ParsedStudy.model_fields})
-
-
 async def search_studies(
     condition_group: str | None,
     sponsor: str | None,
@@ -99,7 +95,7 @@ async def search_studies(
 
 async def get_study(nct_id: str) -> ParsedStudy | None:
     row = await fetch_one("SELECT * FROM studies WHERE nct_id = %s", (nct_id,))
-    return _to_study(row) if row else None
+    return ParsedStudy.model_validate(row) if row else None
 
 
 async def missing_results_candidates(
@@ -114,7 +110,7 @@ async def missing_results_candidates(
         """,
         {"condition_group": condition_group, "sponsor": sponsor},
     )
-    return [_to_study(row) for row in rows]
+    return [ParsedStudy.model_validate(row) for row in rows]
 
 
 async def studies_with_status(
@@ -127,8 +123,8 @@ async def studies_with_status(
         """,
         {"condition_group": condition_group, "sponsor": sponsor, "statuses": statuses},
     )
-    return [_to_study(row) for row in rows]
+    return [ParsedStudy.model_validate(row) for row in rows]
 
 
 async def all_studies() -> list[ParsedStudy]:
-    return [_to_study(row) for row in await fetch_all("SELECT * FROM studies")]
+    return [ParsedStudy.model_validate(row) for row in await fetch_all("SELECT * FROM studies")]

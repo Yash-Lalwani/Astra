@@ -1,10 +1,9 @@
 """PubMed E-utilities client: esearch for PMIDs, efetch for article XML."""
 
-import asyncio
 import logging
-import time
 
 import httpx
+from langchain_core.rate_limiters import InMemoryRateLimiter
 from tenacity import retry, retry_if_exception, stop_after_attempt, wait_exponential
 
 from astra.config import settings
@@ -17,19 +16,8 @@ BASE_URL = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
 REQUEST_TIMEOUT_SECONDS = 30
 FETCH_BATCH_SIZE = 100
 
-_throttle_lock = asyncio.Lock()
-_last_request_at = 0.0
-
-
-async def _throttle() -> None:
-    """NCBI allows 3 requests/s without an API key and 10/s with one."""
-    global _last_request_at
-    min_interval = 0.11 if settings.ncbi_api_key else 0.35
-    async with _throttle_lock:
-        wait = _last_request_at + min_interval - time.monotonic()
-        if wait > 0:
-            await asyncio.sleep(wait)
-        _last_request_at = time.monotonic()
+# NCBI allows 3 requests/s without an API key and 10/s with one.
+_rate_limiter = InMemoryRateLimiter(requests_per_second=10 if settings.ncbi_api_key else 3)
 
 
 def _is_retryable(error: BaseException) -> bool:
@@ -53,25 +41,20 @@ async def _get(endpoint: str, params: dict[str, str | int]) -> httpx.Response:
         params["email"] = settings.ncbi_email
     if settings.ncbi_api_key:
         params["api_key"] = settings.ncbi_api_key
-    await _throttle()
+    await _rate_limiter.aacquire()
     async with httpx.AsyncClient(timeout=REQUEST_TIMEOUT_SECONDS) as client:
         response = await client.get(f"{BASE_URL}/{endpoint}", params=params)
     response.raise_for_status()
     return response
 
 
-async def search_pmids(term: str, max_results: int = 20) -> list[str]:
-    """PMIDs matching any PubMed search term, e.g. "NCT01234567[si]" or free text."""
-    response = await _get(
-        "esearch.fcgi",
-        {"db": "pubmed", "term": term, "retmax": max_results, "retmode": "json"},
-    )
-    return response.json().get("esearchresult", {}).get("idlist", [])
-
-
 async def pmids_for_trial(nct_id: str, max_results: int = 20) -> list[str]:
     """Papers that list the trial in their secondary-source ID field."""
-    return await search_pmids(f"{nct_id}[si]", max_results)
+    response = await _get(
+        "esearch.fcgi",
+        {"db": "pubmed", "term": f"{nct_id}[si]", "retmax": max_results, "retmode": "json"},
+    )
+    return response.json().get("esearchresult", {}).get("idlist", [])
 
 
 async def fetch_papers(pmids: list[str]) -> list[tuple[ParsedPaper, str]]:
