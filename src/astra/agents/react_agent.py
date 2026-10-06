@@ -21,7 +21,7 @@ from langgraph.prebuilt import ToolNode
 from langgraph.store.base import BaseStore
 
 from astra import llm
-from astra.agents.registry import AGENTS, AgentConfig, load_prompt
+from astra.agents.registry import AGENTS, AgentConfig, agent_tools, load_prompt
 from astra.config import settings
 from astra.memory.episodic import similar_episodes
 from astra.memory.procedural import get_rules
@@ -45,7 +45,8 @@ class ReactState(TypedDict):
 
 
 def build_react_agent(config: AgentConfig) -> CompiledStateGraph:
-    model = llm.tool_model("fast", config.tools)
+    tools = agent_tools(config)
+    model = llm.tool_model("fast", tools)
     reporter = llm.structured_model("fast", AgentFindings)
 
     async def agent(state: ReactState) -> dict:
@@ -70,7 +71,7 @@ def build_react_agent(config: AgentConfig) -> CompiledStateGraph:
 
     graph = StateGraph(ReactState)
     graph.add_node("agent", agent)
-    graph.add_node("tools", ToolNode(list(config.tools), handle_tool_errors=True))
+    graph.add_node("tools", ToolNode(list(tools), handle_tool_errors=True))
     graph.add_node("report", report)
     graph.add_edge(START, "agent")
     graph.add_conditional_edges("agent", after_agent, ["tools", "report"])

@@ -1,4 +1,5 @@
 import pytest
+from fakes import FakeLayer, enable_layer
 
 from astra.db import fetch_all, fetch_one
 from astra.guardrails.validator import validate_signals
@@ -106,3 +107,51 @@ async def test_drops_are_logged_only_for_a_run(seeded):
         ("signal_validation", "dropped", "missing_results")
     ]
     assert events[0]["detail"]["nct_id"] == "NCT09999999"
+
+
+PAPER_EVIDENCE = [
+    EvidenceItem(source="registry", reference="NCT00000001", detail="58 serious AEs"),
+    EvidenceItem(source="paper", reference="PMID 111", detail="The paper reports no serious AEs"),
+]
+
+
+async def test_supported_citation_is_marked_verified(seeded, monkeypatch):
+    layer = FakeLayer(chunks=[{"id": "c1", "text": "No serious AEs."}], supported=True)
+    enable_layer(monkeypatch, layer)
+    kept, _ = await validate_signals([result("side_effect", draft(evidence=PAPER_EVIDENCE))], None)
+    assert kept[0].citation_verified is True
+    assert kept[0].confidence == 0.8
+    assert layer.called("search")[0]["filters"] == {"pmid": "111"}
+    assert layer.called("verify_citations")[0]["strict"] is True
+
+
+async def test_unsupported_citation_is_capped_below_threshold_and_logged(seeded, monkeypatch):
+    layer = FakeLayer(chunks=[{"id": "c1", "text": "Unrelated."}], supported=False)
+    enable_layer(monkeypatch, layer)
+    run = await fetch_one("INSERT INTO runs (task) VALUES ('t') RETURNING run_id")
+    signal = draft(evidence=PAPER_EVIDENCE, confidence=0.95)
+
+    kept, _ = await validate_signals([result("side_effect", signal)], str(run["run_id"]))
+
+    assert kept[0].citation_verified is False
+    assert kept[0].confidence == 0.54  # side_effect threshold 0.55 minus 0.01
+    events = await fetch_all("SELECT stage, action FROM guardrail_events")
+    assert [(e["stage"], e["action"]) for e in events] == [("citation_check", "capped")]
+
+
+async def test_citations_stay_unchecked_when_layer_cannot_tell(seeded, monkeypatch):
+    enable_layer(monkeypatch, FakeLayer(chunks=[]))  # the paper has no passages in Layer
+    kept, _ = await validate_signals([result("side_effect", draft(evidence=PAPER_EVIDENCE))], None)
+    assert kept[0].citation_verified is None
+
+    async def broken(*args, **kwargs):
+        raise RuntimeError("Layer down")
+
+    monkeypatch.setattr("astra.tools.evidence_tools.call_layer", broken)
+    kept, _ = await validate_signals([result("side_effect", draft(evidence=PAPER_EVIDENCE))], None)
+    assert kept[0].citation_verified is None and kept[0].confidence == 0.8
+
+
+async def test_no_citation_check_with_layer_disabled_or_without_paper_evidence(seeded):
+    kept, _ = await validate_signals([result("side_effect", draft(evidence=PAPER_EVIDENCE))], None)
+    assert kept[0].citation_verified is None  # Layer is disabled in tests

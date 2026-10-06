@@ -14,6 +14,7 @@ from astra.models import ParsedStudy  # noqa: E402
 from astra.queries.trials import upsert_studies  # noqa: E402
 
 settings.database_url = settings.test_database_url
+settings.layer_mcp_url = ""  # tests never call the real Layer-Engine
 
 
 @pytest.fixture(scope="session")

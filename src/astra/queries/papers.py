@@ -1,4 +1,4 @@
-from astra.db import execute_many, fetch_all, fetch_one
+from astra.db import execute, execute_many, fetch_all, fetch_one
 from astra.models import ParsedPaper
 
 UPSERT_PAPER = """
@@ -50,4 +50,41 @@ async def linked_papers(nct_id: str, limit: int) -> list[dict]:
         LIMIT %s
         """,
         (nct_id, limit),
+    )
+
+
+async def papers_for_layer() -> list[dict]:
+    """Papers not yet in Layer-Engine, with their linked trials and condition groups."""
+    return await fetch_all(
+        """
+        SELECT papers.pmid, papers.title, papers.abstract, papers.journal, papers.pub_date,
+               array_agg(DISTINCT study_papers.nct_id) AS nct_ids,
+               array_agg(DISTINCT studies.condition_group) AS condition_groups
+        FROM papers
+        JOIN study_papers USING (pmid)
+        JOIN studies ON studies.nct_id = study_papers.nct_id
+        WHERE papers.layer_ingested_at IS NULL
+        GROUP BY papers.pmid
+        ORDER BY papers.pmid
+        """
+    )
+
+
+async def mark_in_layer(pmid: str) -> None:
+    await execute("UPDATE papers SET layer_ingested_at = now() WHERE pmid = %s", (pmid,))
+
+
+async def upsert_synthetic_papers(papers: list[ParsedPaper]) -> None:
+    """Guardrail demo papers: stored like real ones but flagged is_synthetic."""
+    await execute_many(
+        """
+        INSERT INTO papers (pmid, title, abstract, journal, pub_date, is_synthetic)
+        VALUES (%(pmid)s, %(title)s, %(abstract)s, %(journal)s, %(pub_date)s, TRUE)
+        ON CONFLICT (pmid) DO UPDATE SET
+          title = EXCLUDED.title,
+          abstract = EXCLUDED.abstract,
+          is_synthetic = TRUE,
+          layer_ingested_at = NULL
+        """,
+        [paper.model_dump() for paper in papers],
     )

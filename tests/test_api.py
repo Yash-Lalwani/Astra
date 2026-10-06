@@ -181,3 +181,17 @@ async def test_detail_and_system_endpoints(api):
         "missing_results", "broken_promises", "track_record", "pattern_finder", "side_effect",
         "timeline",
     }  # fmt: skip
+
+
+async def test_health_reports_layer_status(api, monkeypatch):
+    from fakes import FakeLayer, enable_layer
+
+    assert (await api.get("/health")).json()["layer"] == "disabled"
+    enable_layer(monkeypatch, FakeLayer())
+    assert (await api.get("/health")).json()["layer"] == "ok"
+
+    async def down(*args, **kwargs):
+        raise RuntimeError("unreachable")
+
+    monkeypatch.setattr("astra.tools.evidence_tools.call_layer", down)
+    assert (await api.get("/health")).json()["layer"] == "error"

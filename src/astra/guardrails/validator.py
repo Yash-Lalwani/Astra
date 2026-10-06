@@ -1,14 +1,19 @@
 """Signal validation (guardrail 3): every finding is checked against the data before it is saved.
-
-Citation verification (guardrail 4) is added here when Layer-Engine is enabled; until then
-citation_verified stays None.
+Citation verification (guardrail 4): when Layer-Engine is enabled, claims citing a paper are
+checked against the paper's text; with Layer disabled citation_verified stays None.
 """
 
+import logging
+
 from astra.agents.registry import AGENTS, AgentConfig
+from astra.config import settings
 from astra.models import AgentResult, SignalDraft, ValidatedSignal
 from astra.queries import sponsors as sponsor_queries
 from astra.queries import trials as trial_queries
 from astra.queries.guardrails import log_event
+from astra.tools.evidence_tools import pmid_from_reference, verify_claim
+
+logger = logging.getLogger(__name__)
 
 
 def _normalise(draft: SignalDraft) -> SignalDraft:
@@ -82,4 +87,34 @@ async def validate_signals(
                 detail={"title": draft.title, "nct_id": draft.nct_id, "sponsor": draft.sponsor},
             )
     details = [{"agent": config.name, "reason": problem} for config, _, problem in dropped]
-    return list(kept.values()), details
+    return [await check_citations(signal, run_id) for signal in kept.values()], details
+
+
+async def check_citations(signal: ValidatedSignal, run_id: str | None) -> ValidatedSignal:
+    """Check each paper citation against the paper's text. One unsupported claim caps the
+    confidence just below the threshold, which sends the signal to human review."""
+    papers = [item for item in signal.evidence if item.source == "paper"]
+    if not papers or not settings.layer_enabled:
+        return signal
+    try:
+        verdicts = [await verify_claim(i.detail, pmid_from_reference(i.reference)) for i in papers]
+    except Exception:
+        logger.warning("Citation check failed for %r; left unchecked", signal.title, exc_info=True)
+        return signal
+    checked = [verdict for verdict in verdicts if verdict is not None]
+    if not checked:
+        return signal
+    if all(checked):
+        return signal.model_copy(update={"citation_verified": True})
+    if run_id:
+        await log_event(
+            run_id,
+            stage="citation_check",
+            action="capped",
+            reason="a cited paper does not support the claim",
+            agent=signal.agent,
+            detail={"title": signal.title, "nct_id": signal.nct_id,
+                    "pmids": [pmid_from_reference(item.reference) for item in papers]},
+        )  # fmt: skip
+    capped = min(signal.confidence, round(signal.threshold - 0.01, 2))
+    return signal.model_copy(update={"citation_verified": False, "confidence": capped})

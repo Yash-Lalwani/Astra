@@ -70,3 +70,41 @@ def use_fakes(monkeypatch, fakes: FakeModels) -> None:
 
 def route_to(*agents: str) -> RoutingDecision:
     return RoutingDecision(in_scope=True, agents=list(agents), condition_group=None, reason="r")
+
+
+class FakeLayer:
+    """Stands in for evidence_tools.call_layer: records each call and returns canned replies."""
+
+    def __init__(self, chunks: list[dict] | None = None, supported: bool = True):
+        self.calls: list[tuple[str, dict]] = []
+        self.chunks = chunks or []
+        self.supported = supported
+        self.collections: list[dict] = [{"id": "k8s-demo"}]
+
+    async def __call__(self, name: str, /, **args):
+        self.calls.append((name, args))
+        if name == "search":
+            return {"chunks": self.chunks}
+        if name == "verify_citations":
+            return {"all_supported": self.supported}
+        if name == "list_collections":
+            return self.collections[0] if len(self.collections) == 1 else self.collections
+        if name == "create_collection":
+            self.collections.append({"id": args["collection_id"]})
+            return {"id": args["collection_id"]}
+        if name == "ingest_document":
+            return {"status": "created"}
+        if name == "health":
+            return {"status": "ok"}
+        raise AssertionError(f"unexpected Layer call {name}")
+
+    def called(self, name: str) -> list[dict]:
+        return [args for called_name, args in self.calls if called_name == name]
+
+
+def enable_layer(monkeypatch, layer: FakeLayer) -> None:
+    from astra.config import settings
+    from astra.tools import evidence_tools
+
+    monkeypatch.setattr(settings, "layer_mcp_url", "https://layer.test/mcp")
+    monkeypatch.setattr(evidence_tools, "call_layer", layer)

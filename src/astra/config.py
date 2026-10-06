@@ -101,8 +101,9 @@ def configure_logging() -> None:
         level=settings.log_level.upper(),
         format="%(asctime)s %(levelname)s %(name)s %(message)s",
     )
-    # httpx logs every request at INFO; that would drown out Astra's own log lines.
+    # httpx and the MCP client log every request at INFO; that would drown out Astra's own lines.
     logging.getLogger("httpx").setLevel(logging.WARNING)
+    logging.getLogger("mcp").setLevel(logging.WARNING)
 
 
 settings = Settings()

@@ -1,10 +1,11 @@
-"""python -m astra.ingestion [--per-condition 200] [--groups oncology metabolic_t2d ...]"""
+"""python -m astra.ingestion [--per-condition 200] [--groups oncology ...] [--to-layer]"""
 
 import argparse
 import asyncio
 
 from astra.config import CONDITION_GROUPS, configure_logging
 from astra.db import close_pool
+from astra.ingestion.layer_ingest import ingest_to_layer
 from astra.ingestion.pipeline import run_ingestion
 from astra.queries import papers, sponsors, trials
 
@@ -35,9 +36,15 @@ async def main() -> None:
     parser.add_argument(
         "--groups", nargs="+", choices=list(CONDITION_GROUPS), default=list(CONDITION_GROUPS)
     )
+    parser.add_argument(
+        "--to-layer", action="store_true", help="only send stored papers and trials to Layer"
+    )
     args = parser.parse_args()
     configure_logging()
     try:
+        if args.to_layer:
+            print(await ingest_to_layer())
+            return
         await run_ingestion(args.per_condition, args.groups)
         await print_summary()
     finally:

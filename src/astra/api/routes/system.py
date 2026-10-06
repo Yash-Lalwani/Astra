@@ -1,12 +1,13 @@
 from fastapi import APIRouter, Response
 
-from astra.agents.registry import AGENTS
+from astra.agents.registry import AGENTS, agent_tools
 from astra.api.deps import GraphDep
 from astra.api.schemas import AgentInfo, GraphDiagram, Health, Page, Stats
 from astra.config import settings
 from astra.db import database_ok
 from astra.queries import rules as rule_queries
 from astra.queries import signals as signal_queries
+from astra.tools.evidence_tools import layer_healthy
 
 router = APIRouter(tags=["system"])
 
@@ -14,8 +15,10 @@ router = APIRouter(tags=["system"])
 @router.get("/health", response_model=Health, responses={503: {"model": Health}})
 async def health(response: Response):
     database = "ok" if await database_ok() else "error"
-    # Layer-Engine is connected in Phase 5; until then a configured URL cannot be "ok".
-    layer = "error" if settings.layer_enabled else "disabled"
+    if not settings.layer_enabled:
+        layer = "disabled"
+    else:
+        layer = "ok" if await layer_healthy() else "error"
     if database != "ok":
         response.status_code = 503
     return Health(status="ok" if database == "ok" else "error", database=database, layer=layer)
@@ -37,7 +40,7 @@ async def list_agents():
             signal_type=config.signal_type,
             level=config.level,
             threshold=config.threshold,
-            tools=[tool.name for tool in config.tools],
+            tools=[tool.name for tool in agent_tools(config)],
             rule_count=rule_counts.get(config.name, 0),
         )
         for config in AGENTS.values()

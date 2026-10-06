@@ -1,6 +1,6 @@
 from psycopg.types.json import Jsonb
 
-from astra.db import execute_many, fetch_all, fetch_one
+from astra.db import execute, execute_many, fetch_all, fetch_one
 from astra.models import ParsedStudy
 
 STUDY_COLUMNS = (
@@ -145,3 +145,12 @@ async def studies_for_sponsor(sponsor: str) -> list[dict]:
         """,
         (sponsor,),
     )
+
+
+async def studies_for_layer() -> list[ParsedStudy]:
+    rows = await fetch_all("SELECT * FROM studies WHERE layer_ingested_at IS NULL ORDER BY nct_id")
+    return [ParsedStudy.model_validate(row) for row in rows]
+
+
+async def mark_in_layer(nct_id: str) -> None:
+    await execute("UPDATE studies SET layer_ingested_at = now() WHERE nct_id = %s", (nct_id,))

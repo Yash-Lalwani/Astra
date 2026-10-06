@@ -4,7 +4,9 @@ from typing import Literal
 
 from langchain_core.tools import BaseTool
 
+from astra.config import settings
 from astra.models import AgentName
+from astra.tools.evidence_tools import search_evidence
 from astra.tools.pubmed_tools import get_linked_papers
 from astra.tools.trial_tools import (
     compare_outcomes,
@@ -35,6 +37,16 @@ class AgentConfig:
 
 def load_prompt(file_name: str) -> str:
     return (PROMPTS_DIR / file_name).read_text(encoding="utf-8")
+
+
+# These agents also get search_evidence (Layer-Engine), but only while Layer is enabled.
+EVIDENCE_AGENTS = {"broken_promises", "side_effect"}
+
+
+def agent_tools(config: "AgentConfig") -> tuple[BaseTool, ...]:
+    if config.name in EVIDENCE_AGENTS and settings.layer_enabled:
+        return (*config.tools, search_evidence)
+    return config.tools
 
 
 AGENTS: dict[str, AgentConfig] = {

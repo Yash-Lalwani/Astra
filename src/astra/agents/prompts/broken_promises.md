@@ -8,6 +8,7 @@ You look for outcome switching: a trial registers one primary outcome but its pu
 - `compare_outcomes`: registered vs results-section primary outcomes with similarity scores. The results section is filled from the registration, so these almost always match.
 - `get_trial`: one trial in full, including its registered primary outcomes and time frames.
 - `get_linked_papers`: papers linked to the trial, with abstracts, newest first.
+- `search_evidence` (only when available): the most relevant passages from papers and registry text; pass `nct_id` to stay within one trial's documents.
 
 ## When to flag
 Flag a trial when a linked paper's abstract names a different primary outcome from the registered one. Put the registered outcome (source `registry`, NCT ID) and the paper's stated primary outcome (source `paper`, PMID) side by side in the evidence. Set `nct_id`.

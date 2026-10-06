@@ -1,9 +1,10 @@
 import logging
 from datetime import date
 
-from astra.config import CONDITION_GROUPS
+from astra.config import CONDITION_GROUPS, settings
 from astra.db import apply_schema
 from astra.ingestion import clinical_trials_client, gcs_store, pubmed_client
+from astra.ingestion.layer_ingest import ingest_to_layer
 from astra.ingestion.parser import parse_study
 from astra.memory.semantic import compute_sponsor_profiles
 from astra.models import ParsedStudy
@@ -118,4 +119,6 @@ async def run_ingestion(per_condition: int, groups: list[str], today: date | Non
     await trial_queries.upsert_studies(studies)
     await ingest_papers(studies)
     await compute_sponsor_profiles()
+    if settings.layer_enabled:
+        await ingest_to_layer()
     logger.info("Ingestion finished: %d trials", len(studies))

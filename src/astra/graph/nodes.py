@@ -107,7 +107,8 @@ def make_specialist_node(config: AgentConfig):
 
 async def validator(state: AstraState) -> dict:
     kept, dropped = await validate_signals(state["agent_results"], state["run_id"])
-    events.emit("validation", kept=len(kept), dropped=len(dropped), capped=0, details=dropped)
+    capped = sum(signal.citation_verified is False for signal in kept)
+    events.emit("validation", kept=len(kept), dropped=len(dropped), capped=capped, details=dropped)
     return {"validated_signals": kept}
 
 
