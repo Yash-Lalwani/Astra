@@ -1,7 +1,7 @@
 """Propose about 25 golden trials for the trials eval, each label with the facts behind it.
 
 Writes evals/data/proposed_trials.jsonl. Yash reviews and corrects it and saves the result as
-evals/data/golden_trials.jsonl; this script never writes the golden file.
+evals/data/trials.jsonl; this script never writes that file.
 
 missing_results and timeline_delay come from rules.py facts. broken_promise and safety_gap are
 only hints from abstract text; they need a human reading the papers.

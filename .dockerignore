@@ -1,0 +1,13 @@
+.env
+data/
+frontend/
+tests/
+evals/data/proposed_*
+.git
+.venv/
+.pytest_cache/
+.ruff_cache/
+**/__pycache__/
+MOSAIC_GCP/
+# Top-level docs only; the agent prompts under src/ are .md files and must stay.
+/*.md

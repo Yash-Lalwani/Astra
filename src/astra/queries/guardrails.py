@@ -1,8 +1,11 @@
+import logging
 from typing import Any, Literal
 
 from psycopg.types.json import Jsonb
 
 from astra.db import execute, fetch_all
+
+logger = logging.getLogger(__name__)
 
 Stage = Literal["input", "tool_output", "signal_validation", "citation_check", "usage_limit"]
 Action = Literal["blocked", "dropped", "capped", "sanitized", "stopped"]
@@ -23,6 +26,7 @@ async def log_event(
         """,
         (run_id, stage, agent, action, reason, Jsonb(detail or {})),
     )
+    logger.info("Guardrail %s/%s (agent %s, run %s): %s", stage, action, agent, run_id, reason)
 
 
 async def list_events(stage: str | None, limit: int, offset: int) -> list[dict]:
