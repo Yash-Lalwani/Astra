@@ -4,7 +4,7 @@
 
 Astra reads public ClinicalTrials.gov records and PubMed abstracts and looks for missing results, switched outcomes, unreliable sponsors, cross-study outliers, unreported side effects and silently delayed trials. Every finding is checked against the data, low-confidence ones wait for a human, and every rejection teaches the agent a new rule.
 
-- **Live API:** `<RAILWAY_URL>/docs` (interactive OpenAPI docs; the web app follows)
+- **Live API:** [astra-production-a9f3.up.railway.app/docs](https://astra-production-a9f3.up.railway.app/docs) (interactive OpenAPI docs; the web app follows)
 - **Screenshot of the Live Run page:** *added once the frontend is built*
 
 > Signals are leads for human review, not accusations of misconduct.
